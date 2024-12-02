@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <br>
+    <!-- <div class="logo" style="text-align: center;">
+        <a href="index.html">
+          <img src="./assets/images/logo.png">
+        </a>
+    </div> -->
+    <title>Code-as-Monitor | Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Detection
+    </title>
+
+    <script>
+        var task_map = {
+            "simple-object-manipulation": "simple_object_manipulation",
+            "visual-goal-reaching": "visual_goal_reaching",
+            "novel-concept-grounding": "novel_concept_grounding",
+            "one-shot-video-imitation": "one_shot_video_imitation",
+            "visual-constraint-satisfaction": "visual_constraint_satisfaction",
+            "visual-reasoning": "visual_reasoning"
+        };
+
+        function updateDemoVideo(category) {
+            // var demo = document.getElementById("single-menu-demos").value;
+            var task = document.getElementById(category + "-menu-tasks").value;
+            var inst = document.getElementById(category + "-menu-instances").value;
+
+            console.log(task_map[category], task, inst)
+
+            var video = document.getElementById(category + "-single-task-video");
+            video.src = "assets/videos/demos/" +
+                task_map[category] +
+                "/" +
+                task +
+                "/" +
+                inst +
+                ".mp4";
+            video.playbackRate = 2.0;
+            video.play();
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+
+
+
+<body>
+    <!-- Title and Author -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Code-as-Monitor: Constraint-aware Visual Programming
+                            for Reactive and Proactive Robotic Failure Detection</h1>
+
+                        <!-- <h3 class="title is-4 conference-authors">
+                            <a target="_blank" href="https://cvpr.thecvf.com/">CVPR 2024</a>
+                        </h3> -->
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://github.com/Zhoues">Enshen&#160;Zhou</a><sup>1,4*</sup>,
+                                <a target="_blank" href="https://github.com/QiSu77">Su&#160;Qi</a><sup>2,4*</sup>,
+                                <a target="_blank"
+                                    href="https://chicheng123.github.io/">Cheng&#160;Chi</a><sup>3&#9993</sup>,
+                                <br>
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=X7M0I8kAAAAJ">Zhizheng&#160;Zhang</a><sup>4</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=4XVJrRAAAAAJ">Zhangyuan&#160;Wang</a><sup>3</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com.tw/citations?user=knvEK4AAAAAJ">Tiejun&#160;Huang</a><sup>2,3</sup>,
+                                <a target="_blank"
+                                    href="https://lucassheng.github.io/">Lu&#160;Sheng</a><sup>1&#9993</sup>,
+                                <a target="_blank"
+                                    href="https://hughw19.github.io/">He&#160;Wang</a><sup>2,3,4&#9993</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Beihang University; </span>
+                            <span class="author-block"><sup>2</sup>Peking University; </span>
+                            <span class="author-block"><sup>3</sup>Beijing Academy of Artificial Intelligence; </span>
+                            <span class="author-block"><sup>4</sup>GalBot; </span>
+                        </div>
+
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*&#160;</sup>Equal Contribution&#160;&#160;</span>
+                            <span class="author-block"><sup>&#9993&#160;</sup>Equal Advising&#160;&#160;</span>
+                            <!-- <span class="author-block"><sup>&dagger;&#160;</sup>Project Leader&#160;&#160;</span> -->
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO PDF Link. -->
+                                <span class="link-block">
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>PDF</span>
+                                    </a>
+                                </span>
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>Dataset</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+
+                <h2>
+                    <!-- <h2 class=""> <img src="static/images/highlight_logo.png" width="50"> Highlights</h2> -->
+                    <div class="text-image-container title is-3">
+                        <div>
+                            <img src="assets/images/highlight_logo.png" alt="highlight" width="50">
+                        </div>
+                        <div class="text">
+                            <p>Highlights</p>
+                        </div>
+                    </div>
+                </h2>
+
+
+                <div class="content has-text-justified">
+                    <p>
+                    <ul>
+                        <li><b>
+                                Code-as-Monitor is the
+                                <span style="color: #E4A902;">first</span>
+
+                                framework to integrate both
+                                <span style="color: #E4A902;">reactive and proactive failure detection</span>.
+                            </b></li>
+                        <br>
+                        <li><b>
+                                Code-as-Monitor leverages the proposed constraint elements to
+                                <span style="color: #E4A902;">simplify real-time</span>
+                                failure detection with
+                                <span style="color: #E4A902;">high precision</span>.
+                            </b></li>
+                        <br>
+                        <li><b>
+                                Code-as-Monitor achieves
+                                <span style="color: #E4A902;">state-of-the-art (SOTA)</span>
+                                performance in both simulated and real-world environments, and exhibits
+                                <span style="color: #E4A902;">strong generalizability</span>
+                                on unseen scenarios, tasks, and
+                                objects.
+                            </b></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Video -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <div class="content">
+                            <h2 class="title is-3">Summary Video</h2>
+                            <div class="publication-video">
+                                <!---TODO Dhruv: put video link here-->
+                                <iframe src="https://www.youtube.com/embed/x5TyVZ1QocY?rel=0&amp;showinfo=0"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Motivation -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Motivation</h2>
+                    <img src="assets/images/motivation.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            For the task "Move the pan with lobster to the stove without losing the lobster", <b>(a)</b>
+                            <b><span style="color: #209CEF;">reactive failure detection</span></b> identifies failures
+                            after they occur, and <b><span style="color: #209CEF;">proactive failure
+                                    detection</span></b>
+                            prevents foreseeable failures. In <b>(a)</b>, the robot detects the failure after the
+                            lobster unpredictably jumps out due to the heat. In
+                            <b>(b)</b>, pan tilting is detected and corrected it requiring real-time precision.
+                            <b>(c)</b> shows that our method combined with an <b><span style="color: #209CEF;">open-loop
+                                    policy</span></b> forms a <b><span style="color: #209CEF;">closed-loop
+                                    system</span></b>, enabling proactive (e.g., detecting moving glass during grasping)
+                            and reactive (e.g., removing toy after grasping) failure detection in cluttered scenes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser Video  -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Real-world Demos</h2>
+                <p>
+                    <b>
+                        These demos shows that Code-as-Monitor can transform an <span style="color: #209CEF;">open-loop
+                            policy</span> into a <span style="color: #209CEF;">closed-loop system</span>
+                        by integrating <span style="color: #209CEF;">reactive and proactive failure detection</span> for
+                        long-horizon tasks in cluttered environments with disturbances.
+                    </b>
+                </p>
+                <br>
+                <!-- Video Container -->
+                <div class="video-row">
+                    <!-- Video 1 -->
+                    <div class="item">
+                        <video poster="" id="video0" autoplay playsinline controls muted loop>
+                            <source src="assets/videos/Clear_all_objects_on_the_table_except_for_animals.mp4"
+                                type="video/mp4">
+                        </video>
+                        <br>
+                        <p class="is-centered has-text-centered"><b>Clear all objects on table except for animals. (2X
+                                speed)</b>
+                        </p>
+
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="item">
+                        <video poster="" id="video1" autoplay playsinline controls muted loop>
+                            <source
+                                src="assets/videos/Grasp_the_animals_according_to_their_distances_to_fruits_from_nearest_to_farthest.mp4"
+                                type="video/mp4">
+                        </video>
+                        <br>
+                        <p class="is-centered has-text-centered"><b>Grasp the animals according to their distances to
+                                fruits, from nearest to farthest. (1X speed)</b></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Automatic detection and prevention of open-set failures are crucial in closed-loop robotic
+                            systems. Recent studies often struggle to simultaneously identify unexpected failures
+                            reactively after they occur and prevent foreseeable ones proactively. To this end, we
+                            propose Code-as-Monitor (CaM), a novel paradigm leveraging the vision-language model (VLM)
+                            for both open-set reactive and proactive failure detection. The core of our method is to
+                            formulate both tasks as a unified set of spatio-temporal constraint satisfaction problems
+                            and use VLM-generated code to evaluate them for real-time monitoring. To enhance the
+                            accuracy and efficiency of monitoring, we further introduce constraint elements that
+                            abstract constraint-related entities or their parts into compact geometric elements. This
+                            approach offers greater generality, simplifies tracking, and facilitates constraint-aware
+                            visual programming by leveraging these elements as visual prompts. Experiments show that CaM
+                            achieves a 28.7% higher success rate and reduces execution time by 31.8% under severe
+                            disturbances compared to baselines across three simulators and a real-world setting.
+                            Moreover, CaM can be integrated with open-loop control policies to form closed-loop systems,
+                            enabling long-horizon tasks in cluttered scenes with dynamic environments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+
+
+
+    <!-- overview -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Method Overview</h2>
+                    <img src="assets/images/pipeline.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Overview of Code-as-Monitor.</b> This framework unifies reactive and proactive failure
+                            detection via
+                            constraints, more generally abstracts relevant entities/parts through constraint
+                            elements,
+                            and ensures precise and real-time monitoring via code evaluation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- element -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Constraint Elements</h2>
+                    <img src="assets/images/element.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Constraint Element Pipeline.</b> Given a constraint, our model ConSeg generates
+                            instance-level and part-level masks across multiple views, which are projected into 3D
+                            space. Through a series of heuristics, the desired elements are produced. Once all elements
+                            are obtained, they are annotated onto the original multi-view images.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CLIPort Video -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">CLIPort Simulator Demos</h2>
+                <p>
+                    <b>
+                        These demos shows that Code-as-Monitor can successfully <span style="color: #E4A902;">enhance
+                            monitoring of 3D spatial relationships</span> of entities in the environment, <span
+                            style="color: #E4A902;">facilitating both reactive and proactive failure detection</span>
+                        and leading to <span style="color: #E4A902;">more accurate counting</span>.
+                    </b>
+                </p>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Stack in Order. Disturbances: Placement noise.</b></p>
+                </div>
+                <br>
+
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist_doremi.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>DoReMi Baseline:</b> Frequent VLM queries lead to increased
+                            incorrect failure judgments due to a limited 3D spatial understanding from single.</div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="divider"></div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist_max.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b> under the most severe disturbance.</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Stack in Order. Disturbances: Random drop.</b></p>
+                </div>
+                <br>
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop_im.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Inner Monologue Baseline:</b> Only detects failures upon subgoal
+                            completion.</div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="divider"></div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop_max.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b> under the most severe disturbance.</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Sweep half the blocks</b></p>
+                </div>
+                <br>
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/sweep_half_the_blocks.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/sweep_half_the_blocks_im.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>DoReMi Baseline:</b> Directly using VLM to count blocks fails to
+                            complete the task.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Omnigibson Video  -->
+    <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Omnigibson Simulator Demos</h2>
+                <p> <b>
+                        These demos shows that Code-as-Monitor can successfully <span style="color: #E4A902;">enhance
+                            monitoring of 3D spatial relationships</span> of entities in the environment, <span
+                            style="color: #E4A902;">facilitating both reactive and proactive failure detection</span>
+                        and leading to <span style="color: #E4A902;">more accurate counting</span>.
+                    </b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video7">
+                        <video poster="" id="video7" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Slot_pen.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video8">
+                        <video poster="" id="video8" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Stow_book.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video9">
+                        <video poster="" id="video9" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Pour_tea.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--  Constraint-aware Seg  -->
+    <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Visualization of Constraint-aware Segmentation</h2>
+                <p> <b>we show more visualization of constraint-aware segmentation results of both instance level and
+                        part level from <span style="color: #E4A902;">out of distribution data</span> to demonstrate the
+                        <span style="color: #E4A902;">strong generalizability</span> on unseen
+                        scenarios, tasks, and .</b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video8">
+                        <img src="assets/images/conseg_open6dor.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video9">
+                        <img src="assets/images/conseg_rt1.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video7">
+                        <img src="assets/images/conseg_robofail.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video9">
+                        <img src="assets/images/conseg_omnigibson.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>Coming Soon!</code></pre>
+        </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+
+                        <p>
+                            This page was built using the <a
+                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                            You are free to borrow the of this website, we just ask that you link back to this page in
+                            the footer.
+                            <br> This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
