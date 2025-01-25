@@ -1,0 +1,1 @@
+window.HELP_IMPROVE_VIDEOJS=!1,$(document).ready(function(){var a={slidesToScroll:1,slidesToShow:1,loop:!0,infinite:!0,autoplay:!1,autoplaySpeed:5e3};bulmaCarousel.attach(".carousel",a);bulmaSlider.attach()});
