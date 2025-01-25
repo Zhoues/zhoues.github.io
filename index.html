@@ -37,15 +37,38 @@
             a -= 0.016;
             s += 0.002;
           }
-        }, 15)
+        }, 15);
 
       }
       function randomColor() {
-
         return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math
           .random() * 255)) + ")";
-
       }
+
+      // Add the copyBibTeX function
+      window.copyBibTeX = function (button) {
+        const bibtexContent = button.getAttribute("data-bibtex");
+        const copySuccess = button.nextElementSibling;
+
+        // Create a temporary textarea element to hold the text
+        const tempTextarea = document.createElement("textarea");
+        tempTextarea.value = bibtexContent;
+        document.body.appendChild(tempTextarea);
+
+        // Select and copy the text
+        tempTextarea.select();
+        document.execCommand("copy");
+
+        // Remove the temporary textarea
+        document.body.removeChild(tempTextarea);
+
+        // Show success message
+        copySuccess.style.display = "inline";
+        setTimeout(() => {
+          copySuccess.style.display = "none";
+        }, 2000);
+      }
+
     }());
   </script>
 
@@ -242,22 +265,19 @@
           <a class="a1" href="https://arxiv.org/abs/2412.04455">Paper</a> /
           <a class="a1" href="https://zhoues.github.io/Code-as-Monitor/">Project</a> /
           <!-- <a class="a1" href="https://github.com/Zhoues/MineDreamer">Code</a> / -->
-          <a class="a1" href="javascript:hideshow(document.getElementById('cam'))">BibTeX</a>
-          <p id="cam" style="font:1px; display: none">
-            @article{zhou2024code,
-            <br>
-            title={Code-as-Monitor: Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure
-            Detection},
-            <br>
-            author={Zhou, Enshen and Su, Qi and Chi, Cheng and Zhang, Zhizheng and Wang, Zhongyuan and Huang, Tiejun and
-            Sheng, Lu and Wang, He},
-            <br>
-            journal={arXiv preprint arXiv:2412.04455},
-            <br>
-            year={2024}
-            <br>
-            }
-          </p>
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@article{zhou2024code,
+        title={Code-as-Monitor: Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Detection},
+        author={Zhou, Enshen and Su, Qi and Chi, Cheng and Zhang, Zhizheng and Wang, Zhongyuan and Huang, Tiejun and Sheng, Lu and Wang, He},
+        journal={arXiv preprint arXiv:2412.04455},
+        year={2024}
+}
+            " onclick="copyBibTeX(this)">Copy BibTeX</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+
           <br>
           <spacer></spacer>
           <em><strong>Preprint, 2024</strong></em>
@@ -313,21 +333,20 @@
           <a class="a1" href="https://arxiv.org/abs/2410.18072">Paper</a> /
           <a class="a1" href="https://iranqin.github.io/WorldSimBench.github.io/">Project</a> /
           <!-- <a class="a1" href="https://github.com/IranQin/MP5">Code</a> / -->
-          <a class="a1" href="javascript:hideshow(document.getElementById('wsb'))">BibTeX</a>
-          <p id="wsb" style="font:1px; display: none">
-            @article{qin2024worldsimbench,
-            <br>
-            title={Worldsimbench: Towards video generation models as world simulators},
-            <br>
-            author={Qin, Yiran and Shi, Zhelun and Yu, Jiwen and Wang, Xijun and Zhou, Enshen and Li, Lijun and Yin,
-            Zhenfei and Liu, Xihui and Sheng, Lu and Shao, Jing and others},
-            <br>
-            journal={arXiv preprint arXiv:2410.18072},
-            <br>
-            year={2024}
-            <br>
-            }
-          </p>
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@article{qin2024worldsimbench,
+        title={Worldsimbench: Towards video generation models as world simulators},
+        author={Qin, Yiran and Shi, Zhelun and Yu, Jiwen and Wang, Xijun and Zhou, Enshen and Li, Lijun and Yin,
+        Zhenfei and Liu, Xihui and Sheng, Lu and Shao, Jing and others},
+        journal={arXiv preprint arXiv:2410.18072},
+        year={2024}
+}
+            " onclick="copyBibTeX(this)">Copy BibTeX</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+
           <br>
           <spacer></spacer>
           <em><strong>Preprint, 2024</strong></em>
@@ -381,21 +400,20 @@
           <a class="a1" href="https://arxiv.org/abs/2403.13352">Paper</a> /
           <a class="a1" href="https://sites.google.com/view/minedreamer/main">Project</a> /
           <a class="a1" href="https://github.com/Zhoues/MineDreamer">Code</a> /
-          <a class="a1" href="javascript:hideshow(document.getElementById('agfsync'))">BibTeX</a>
-          <p id="agfsync" style="font:1px; display: none">
-            @article{an2024agfsync,
-            <br>
-            title={AGFSync: Leveraging AI-Generated Feedback for Preference Optimization in Text-to-Image Generation},
-            <br>
-            author={An, Jingkun and Zhu, Yinghao and Li, Zongjian and Feng, Haoran and Chen, Bohua and Shi, Yemin and
-            Pan, Chengwei},
-            <br>
-            journal={arXiv preprint arXiv:2403.13352},
-            <br>
-            year={2024}
-            <br>
-            }
-          </p>
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@article{an2024agfsync,
+        title={AGFSync: Leveraging AI-Generated Feedback for Preference Optimization in Text-to-Image Generation},
+        author={An, Jingkun and Zhu, Yinghao and Li, Zongjian and Feng, Haoran and Chen, Bohua and Shi, Yemin and
+        Pan, Chengwei},
+        journal={arXiv preprint arXiv:2403.13352},
+        year={2024}
+}
+            " onclick="copyBibTeX(this)">Copy BibTeX</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+
           <br>
           <spacer></spacer>
           <em><strong>Proceedings of the AAAI Conference on Artificial Intelligence, AAAI 2025</strong></em>
@@ -445,21 +463,20 @@
           <a class="a1" href="https://arxiv.org/abs/2403.12037">Paper</a> /
           <a class="a1" href="https://sites.google.com/view/minedreamer/main">Project</a> /
           <a class="a1" href="https://github.com/Zhoues/MineDreamer">Code</a> /
-          <a class="a1" href="javascript:hideshow(document.getElementById('minedreamer'))">BibTeX</a>
-          <p id="minedreamer" style="font:1px; display: none">
-            @article{zhou2024minedreamer,
-            <br>
-            title={Minedreamer: Learning to follow instructions via chain-of-imagination for simulated-world control},
-            <br>
-            author={Zhou, Enshen and Qin, Yiran and Yin, Zhenfei and Huang, Yuzhou and Zhang, Ruimao and Sheng, Lu and
-            Qiao, Yu and Shao, Jing},
-            <br>
-            journal={arXiv preprint arXiv:2403.12037},
-            <br>
-            year={2024}
-            <br>
-            }
-          </p>
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@article{zhou2024minedreamer,
+        title={Minedreamer: Learning to follow instructions via chain-of-imagination for simulated-world control},
+        author={Zhou, Enshen and Qin, Yiran and Yin, Zhenfei and Huang, Yuzhou and Zhang, Ruimao and Sheng, Lu and
+        Qiao, Yu and Shao, Jing},
+        journal={arXiv preprint arXiv:2403.12037},
+        year={2024}
+}
+            " onclick="copyBibTeX(this)">Copy BibTeX</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+
           <br>
           <spacer></spacer>
           <em><strong>Advances in Neural Information Processing Systems, NeurIPS 2024 @ OWA</strong></em>
@@ -509,23 +526,21 @@
           <a class="a1" href="https://arxiv.org/abs/2312.07472">Paper</a> /
           <a class="a1" href="https://iranqin.github.io/MP5.github.io/">Project</a> /
           <a class="a1" href="https://github.com/IranQin/MP5">Code</a> /
-          <a class="a1" href="javascript:hideshow(document.getElementById('mp5'))">BibTeX</a>
-          <p id="mp5" style="font:1px; display: none">
-            @inproceedings{qin2024mp5,
-            <br>
-            title={MP5: A Multi-modal Open-ended Embodied System in Minecraft via Active Perception},
-            <br>
-            author={Qin, Yiran and Zhou, Enshen and Liu, Qichang and Yin, Zhenfei and Sheng, Lu and Zhang, Ruimao and
-            Qiao, Yu and Shao, Jing},
-            <br>
-            booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-            <br>
-            pages={16307--16316},
-            <br>
-            year={2024}
-            <br>
-            }
-          </p>
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@inproceedings{qin2024mp5,
+        title={MP5: A Multi-modal Open-ended Embodied System in Minecraft via Active Perception},
+        author={Qin, Yiran and Zhou, Enshen and Liu, Qichang and Yin, Zhenfei and Sheng, Lu and Zhang, Ruimao and
+        Qiao, Yu and Shao, Jing},
+        booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+        pages={16307--16316},
+        year={2024}
+}
+            " onclick="copyBibTeX(this)">Copy BibTeX</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+
           <br>
           <spacer></spacer>
           <em><strong>The IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2024</strong></em>

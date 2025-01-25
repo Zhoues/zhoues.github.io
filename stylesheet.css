@@ -166,7 +166,7 @@ abs {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
   color:
-    #EB6400;
+    #fba524;
 }
 
 .one {
@@ -174,7 +174,6 @@ abs {
   height: 160px;
   position: relative;
   justify-content: center;
-  /* 垂直居中 */
   height: 100%;
 }
 
@@ -195,4 +194,22 @@ abs {
 
 span.highlight {
   background-color: #ffffd0;
+}
+
+
+
+.copy-text {
+  color: #fba524;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 16px;
+}
+.copy-text:hover {
+  color: #fba524;
+}
+.copy-success {
+  color: #fba524;
+  font-size: 16px;
+  margin-left: 10px;
+  display: none;
 }
