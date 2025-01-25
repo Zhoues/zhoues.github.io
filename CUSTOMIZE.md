@@ -130,7 +130,7 @@ There are several custom bibtex keywords that you can use to affect how the entr
 - `bibtex_show`: Adds a "Bib" button that expands a hidden text field with the full bibliography entry
 - `blog`: Adds a "Blog" button redirecting to the specified link
 - `code`: Adds a "Code" button redirecting to the specified link
-- `dimensions`: Adds a [Dimensions](https://www.dimensions.ai/) badge (Note: if DOI or PMID is provided just use `true`, otherwise only add the Dimensions' identifier here - the link is generated automatically)
+<!-- - `dimensions`: Adds a [Dimensions](https://www.dimensions.ai/) badge (Note: if DOI or PMID is provided just use `true`, otherwise only add the Dimensions' identifier here - the link is generated automatically) -->
 - `html`: Inserts an "HTML" button redirecting to the user-specified link
 - `pdf`: Adds a "PDF" button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)
 - `poster`: Adds a "Poster" button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)
