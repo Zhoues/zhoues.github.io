@@ -1,0 +1,107 @@
+/* Carousel Container Styles */
+.carousel-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+}
+
+.carousel-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Carousel wrapper for track and arrows */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-wrapper:active {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+/* Disable transition during instant repositioning */
+.carousel-track.no-transition {
+    transition: none;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 25%;
+    padding: 0.5rem;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Arrows */
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.carousel-prev {
+    left: 0.5rem;
+}
+
+.carousel-next {
+    right: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .carousel-item {
+        width: 33.333%;
+    }
+}
+@media (max-width: 768px) {
+    .carousel-item {
+        width: 50%;
+    }
+}
+@media (max-width: 480px) {
+    .carousel-item {
+        width: 100%;
+    }
+}

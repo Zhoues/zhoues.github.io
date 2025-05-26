@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+      You had commented out the logo div, so it's omitted here.
+      If you want it back, simply uncomment the code below.
+    -->
+    <!-- <div class="logo" style="text-align: center;">
+        <a href="index.html">
+          <img src="./assets/images/logo.png">
+        </a>
+    </div> -->
+
+    <title>Code-as-Monitor | Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Detection</title>
+
+    <script>
+        var task_map = {
+            "simple-object-manipulation": "simple_object_manipulation",
+            "visual-goal-reaching": "visual_goal_reaching",
+            "novel-concept-grounding": "novel_concept_grounding",
+            "one-shot-video-imitation": "one_shot_video_imitation",
+            "visual-constraint-satisfaction": "visual_constraint_satisfaction",
+            "visual-reasoning": "visual_reasoning"
+        };
+
+        function updateDemoVideo(category) {
+            var task = document.getElementById(category + "-menu-tasks").value;
+            var inst = document.getElementById(category + "-menu-instances").value;
+
+            var video = document.getElementById(category + "-single-task-video");
+            video.src = "assets/videos/demos/" +
+                task_map[category] +
+                "/" +
+                task +
+                "/" +
+                inst +
+                ".mp4";
+            video.playbackRate = 2.0;
+            video.play();
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+
+
+</head>
+
+<body>
+    <!-- Title and Author -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Code-as-Monitor: Constraint-aware Visual Programming
+                            for Reactive and Proactive Robotic Failure Detection</h1>
+
+                        <h3 class="title is-4 conference-authors">
+                            <a target="_blank" href="https://cvpr.thecvf.com/Conferences/2025">CVPR 2025</a>
+                        </h3>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://zhoues.github.io/">Enshen&#160;Zhou</a><sup>1*</sup>,
+                                <a target="_blank" href="https://github.com/QiSu77">Qi&#160;Su</a><sup>2*</sup>,
+                                <a target="_blank"
+                                    href="https://chicheng123.github.io/">Cheng&#160;Chi</a><sup>3*&#9993;</sup>,
+                                <br>
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=X7M0I8kAAAAJ">Zhizheng&#160;Zhang</a><sup>4</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=4XVJrRAAAAAJ">Zhongyuan&#160;Wang</a><sup>3</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com.tw/citations?user=knvEK4AAAAAJ">Tiejun&#160;Huang</a><sup>2,3</sup>,
+                                <a target="_blank"
+                                    href="https://lucassheng.github.io/">Lu&#160;Sheng</a><sup>1&#9993;</sup>,
+                                <a target="_blank"
+                                    href="https://hughw19.github.io/">He&#160;Wang</a><sup>2,3,4&#9993;</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Beihang University; </span>
+                            <span class="author-block"><sup>2</sup>Peking University; </span>
+                            <span class="author-block"><sup>3</sup>Beijing Academy of Artificial Intelligence; </span>
+                            <span class="author-block"><sup>4</sup>GalBot; </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*&#160;</sup>Equal Contribution&#160;&#160;</span>
+                            <span class="author-block"><sup>&#9993;&#160;</sup>Equal Advising&#160;&#160;</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/2412.04455"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/pdf/2412.04455"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>PDF</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://www.youtube.com/watch?v=uiXKfOrfGrQ" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-video"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://www.bilibili.com/video/BV1YXQRY2EHk" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-film"></i>
+                                        </span>
+                                        <span>BiilBili</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<section class="carousel-container">
+    <div class="text-image-container title is-3">
+        <div class="text">
+            <p>Benchmark Location Example</p>
+        </div>
+    </div>
+  <div class="carousel-wrapper" id="carouselWrapper">
+
+    <!-- Arrow Buttons -->
+    <button class="carousel-prev" id="prevBtn">&lt;</button>
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_1.png" alt="Location 1"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_2.png" alt="Location 2"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_3.png" alt="Location 3"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_4.png" alt="Location 4"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_5.png" alt="Location 5"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_6.png" alt="Location 6"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_7.png" alt="Location 7"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_8.png" alt="Location 8"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_9.png" alt="Location 9"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_10.png" alt="Location 10"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_11.png" alt="Location 11"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_12.png" alt="Location 12"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_13.png" alt="Location 13"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_14.png" alt="Location 14"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_15.png" alt="Location 15"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_16.png" alt="Location 16"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_17.png" alt="Location 17"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_18.png" alt="Location 18"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_19.png" alt="Location 19"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_20.png" alt="Location 20"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_h_21.png" alt="Location 21"></div>
+    </div>
+    <button class="carousel-next" id="nextBtn">&gt;</button>
+  </div>
+
+    <div class="carousel-wrapper" id="carouselWrapper_1">
+
+    <!-- Arrow Buttons -->
+    <button class="carousel-prev" id="prevBtn_1">&lt;</button>
+    <div class="carousel-track" id="carouselTrack_1">
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_1.png" alt="Location v1"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_2.png" alt="Location v2"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_3.png" alt="Location v3"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_4.png" alt="Location v4"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_5.png" alt="Location v5"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_6.png" alt="Location v6"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_7.png" alt="Location v7"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_8.png" alt="Location v8"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_9.png" alt="Location v9"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_10.png" alt="Location v10"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_11.png" alt="Location v11"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_12.png" alt="Location v12"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_13.png" alt="Location v13"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_14.png" alt="Location v14"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_15.png" alt="Location v15"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_16.png" alt="Location v16"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_17.png" alt="Location v17"></div>
+      <div class="carousel-item"><img src="../RoboRefer/benchmark_vis_image/location_v_18.png" alt="Location v18"></div>
+    </div>
+    <button class="carousel-next" id="nextBtn_1">&gt;</button>
+  </div>
+</section>
+<script src="./static/js/carousel.js"></script><script src="./static/js/carousel_1.js"></script>
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+                <h2>
+                    <div class="text-image-container title is-3">
+                        <div>
+                            <img src="assets/images/highlight_logo.png" alt="highlight" width="50">
+                        </div>
+                        <div class="text">
+                            <p>Highlights</p>
+                        </div>
+                    </div>
+                </h2>
+
+                <div class="content has-text-justified">
+                    <p>
+                        <ul>
+                            <li><b>
+                                    Code-as-Monitor is the
+                                    <span style="color: #E4A902;">first</span>
+                                    framework to integrate both
+                                    <span style="color: #E4A902;">reactive and proactive failure detection</span>.
+                                </b></li>
+                            <br>
+                            <li><b>
+                                    Code-as-Monitor leverages the proposed constraint elements to
+                                    <span style="color: #E4A902;">simplify real-time</span>
+                                    failure detection with
+                                    <span style="color: #E4A902;">high precision</span>.
+                                </b></li>
+                            <br>
+                            <li><b>
+                                    Code-as-Monitor achieves
+                                    <span style="color: #E4A902;">state-of-the-art (SOTA)</span>
+                                    performance in both simulated and real-world environments, and exhibits
+                                    <span style="color: #E4A902;">strong generalizability</span>
+                                    on unseen scenarios, tasks, and objects.
+                                </b></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Video -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <div class="content">
+                            <h2>
+                                <div class="text-image-container title is-3">
+                                    <div>
+                                        <img src="assets/images/video_logo.png" alt="highlight" width="40">
+                                    </div>
+                                    <div class="text">
+                                        <p>Summary Video</p>
+                                    </div>
+                                </div>
+                            </h2>
+                            <div class="publication-video">
+                                <iframe src="https://www.youtube.com/embed/uiXKfOrfGrQ?rel=0&amp;showinfo=0"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Motivation</h2>
+                    <img src="assets/images/motivation.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            For the task "Move the pan with lobster to the stove without losing the lobster", <b>(a)</b>
+                            <b><span style="color: #209CEF;">reactive failure detection</span></b> identifies failures
+                            after they occur, and <b><span style="color: #209CEF;">proactive failure
+                                    detection</span></b>
+                            prevents foreseeable failures. In <b>(a)</b>, the robot detects the failure after the
+                            lobster unpredictably jumps out due to the heat. In
+                            <b>(b)</b>, pan tilting is detected and corrected it requiring real-time precision.
+                            <b>(c)</b> shows that our method combined with an <b><span style="color: #209CEF;">open-loop
+                                    policy</span></b> forms a <b><span style="color: #209CEF;">closed-loop
+                                    system</span></b>, enabling proactive (e.g., detecting moving glass during grasping)
+                            and reactive (e.g., removing toy after grasping) failure detection in cluttered scenes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser Video  -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Real-world Demos</h2>
+                <p>
+                    <b>
+                        These demos shows that Code-as-Monitor can transform an <span style="color: #209CEF;">open-loop
+                            policy</span> into a <span style="color: #209CEF;">closed-loop system</span>
+                        by integrating <span style="color: #209CEF;">reactive and proactive failure detection</span> for
+                        long-horizon tasks in cluttered environments with disturbances.
+                    </b>
+                </p>
+                <br>
+                <!-- Video Container -->
+                <div class="video-row">
+                    <!-- Video 1 -->
+                    <div class="item">
+                        <video poster="" id="video0" autoplay playsinline controls muted loop>
+                            <source src="assets/videos/Clear_all_objects_on_the_table_except_for_animals.mp4"
+                                type="video/mp4">
+                        </video>
+                        <br>
+                        <p class="is-centered has-text-centered"><b>Clear all objects on table except for animals.
+                            (2X speed)</b></p>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="item">
+                        <video poster="" id="video1" autoplay playsinline controls muted loop>
+                            <source
+                                src="assets/videos/Grasp_the_animals_according_to_their_distances_to_fruits_from_nearest_to_farthest.mp4"
+                                type="video/mp4">
+                        </video>
+                        <br>
+                        <p class="is-centered has-text-centered"><b>Grasp the animals according to their distances to
+                            fruits, from nearest to farthest. (1X speed)</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Automatic detection and prevention of open-set failures are crucial in closed-loop robotic
+                            systems. Recent studies often struggle to simultaneously identify unexpected failures
+                            reactively after they occur and prevent foreseeable ones proactively. To this end, we
+                            propose Code-as-Monitor (CaM), a novel paradigm leveraging the vision-language model (VLM)
+                            for both open-set reactive and proactive failure detection. The core of our method is to
+                            formulate both tasks as a unified set of spatio-temporal constraint satisfaction problems
+                            and use VLM-generated code to evaluate them for real-time monitoring. To enhance the
+                            accuracy and efficiency of monitoring, we further introduce constraint elements that
+                            abstract constraint-related entities or their parts into compact geometric elements. This
+                            approach offers greater generality, simplifies tracking, and facilitates constraint-aware
+                            visual programming by leveraging these elements as visual prompts. Experiments show that CaM
+                            achieves a 28.7% higher success rate and reduces execution time by 31.8% under severe
+                            disturbances compared to baselines across three simulators and a real-world setting.
+                            Moreover, CaM can be integrated with open-loop control policies to form closed-loop systems,
+                            enabling long-horizon tasks in cluttered scenes with dynamic environments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+
+    <!-- overview -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Method Overview</h2>
+                    <img src="assets/images/pipeline.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Overview of Code-as-Monitor.</b> This framework unifies reactive and proactive failure
+                            detection via constraints, more generally abstracts relevant entities/parts through
+                            constraint elements, and ensures precise and real-time monitoring via code evaluation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- element -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Constraint Elements</h2>
+                    <img src="assets/images/element.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Constraint Element Pipeline.</b> Given a constraint, our model ConSeg generates
+                            instance-level and part-level masks across multiple views, which are projected into 3D
+                            space. Through a series of heuristics, the desired elements are produced. Once all elements
+                            are obtained, they are annotated onto the original multi-view images.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIPort Video -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">CLIPort Simulator Demos</h2>
+                <p>
+                    <b>
+                        These demos shows that Code-as-Monitor can successfully <span style="color: #E4A902;">enhance
+                            monitoring of 3D spatial relationships</span> of entities in the environment,
+                        <span style="color: #E4A902;">facilitating both reactive and proactive failure detection</span>
+                        and leading to <span style="color: #E4A902;">more accurate counting</span>.
+                    </b>
+                </p>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Stack in Order. Disturbances: Placement noise.</b></p>
+                </div>
+                <br>
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist_doremi.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>DoReMi Baseline:</b> Frequent VLM queries lead to increased
+                            incorrect failure judgments due to a limited 3D spatial understanding from single view.</div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_placement_dist_max.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b> under the most severe disturbance.</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Stack in Order. Disturbances: Random drop.</b></p>
+                </div>
+                <br>
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop_im.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Inner Monologue Baseline:</b> Only detects failures upon subgoal
+                            completion.</div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/stack_in_order_with_random_drop_max.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b> under the most severe disturbance.</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="has-text-centered">
+                    <p><b>Task: Sweep half the blocks</b></p>
+                </div>
+                <br>
+                <div class="video-row">
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/sweep_half_the_blocks.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>Our Method</b></div>
+                    </div>
+
+                    <div class="video-container">
+                        <video autoplay playsinline controls muted loop>
+                            <source src="assets/videos/sweep_half_the_blocks_im.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="description"><b>DoReMi Baseline:</b> Directly using VLM to count blocks fails to
+                            complete the task.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Omnigibson Video  -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Omnigibson Simulator Demos</h2>
+                <p> <b>
+                        These demos shows that Code-as-Monitor can <span style="color: #E4A902;">detect richer
+                            failures</span> (e.g., point, line, surface-level disturbances) with <span
+                            style="color: #E4A902;">lower computational cost</span> compared to frequent querying VLMs.
+                    </b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video7">
+                        <video poster="" id="video7" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Slot_pen.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video8">
+                        <video poster="" id="video8" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Stow_book.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video9">
+                        <video poster="" id="video9" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Pour_tea.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Constraint-aware Seg  -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Visualization of Constraint-aware Segmentation</h2>
+                <p> <b>We show more visualization of constraint-aware segmentation results of both instance level and
+                        part level from <span style="color: #E4A902;">out of distribution data</span> to demonstrate the
+                        <span style="color: #E4A902;">strong generalizability</span> on unseen
+                        scenarios, tasks, and objects.</b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video8">
+                        <img src="assets/images/conseg_open6dor.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video9">
+                        <img src="assets/images/conseg_rt1.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video7">
+                        <img src="assets/images/conseg_robofail.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video9">
+                        <img src="assets/images/conseg_omnigibson.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{zhou2024code,
+    title={Code-as-Monitor: Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Detection},
+    author={Zhou, Enshen and Su, Qi and Chi, Cheng and Zhang, Zhizheng and Wang, Zhongyuan and Huang, Tiejun and Sheng, Lu and Wang, He},
+    journal={arXiv preprint arXiv:2412.04455},
+    year={2024}
+}
+</code></pre>
+        </div>
+    </section>
+    <!--End BibTex citation -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This page was built using the <a
+                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                            You are free to borrow the design of this website, we just ask that you link back to this
+                            page in the footer.
+                            <br> This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // --------------- Carousel Control ---------------
+      const track = document.getElementById('carouselTrack');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const carouselWrapper = document.getElementById('carouselWrapper');
+
+      // We'll store carousel items in a variable for convenience
+      const items = track.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+
+      // Autoplay interval in milliseconds
+      const autoPlayInterval = 3000;
+      let autoSlideTimer = null;
+
+      // Function to update the carousel's translation
+      function updateCarousel() {
+        // The track width depends on how many items are shown. We'll just shift by item width * index.
+        // Because each item is "flex: 0 0 auto; width: 25%;" on large screens, to find a single item’s size,
+        // we can measure the first item’s offsetWidth.
+        const itemWidth = items[0].offsetWidth;
+        // Slide so that the first visible item is currentIndex
+        const distance = -currentIndex * itemWidth;
+        track.style.transform = `translateX(${distance}px)`;
+      }
+
+      // Move to the next slide
+      function moveToNext() {
+        // If we're at the end, wrap around
+        if (currentIndex < items.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      }
+
+      // Move to the prev slide
+      function moveToPrev() {
+        // If we're at the start, wrap around
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = items.length - 1;
+        }
+        updateCarousel();
+      }
+
+      // Automatic slide
+      function startAutoSlide() {
+        autoSlideTimer = setInterval(moveToNext, autoPlayInterval);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+
+      // Event listeners for arrow buttons
+      nextBtn.addEventListener('click', () => {
+        stopAutoSlide();  // Stop auto sliding when manually clicked
+        moveToNext();
+        startAutoSlide(); // Restart auto after moving
+      });
+
+      prevBtn.addEventListener('click', () => {
+        stopAutoSlide(); // Stop auto sliding when manually clicked
+        moveToPrev();
+        startAutoSlide(); // Restart auto after moving
+      });
+
+      // Pause on hover
+      carouselWrapper.addEventListener('mouseenter', stopAutoSlide);
+      carouselWrapper.addEventListener('mouseleave', startAutoSlide);
+
+      // Initialize
+      updateCarousel();
+      startAutoSlide();
+
+      // Recalculate if window is resized (so if the item sizes change, we remain consistent)
+      window.addEventListener('resize', updateCarousel);
+    </script>
+</body>
+</html>
