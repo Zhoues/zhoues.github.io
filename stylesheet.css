@@ -79,7 +79,8 @@ a {
 }
 
 b {
-  color: #ff5005;
+  /* color: #ff5005; */
+  color: #000000;
   text-decoration: none;
 }
 
