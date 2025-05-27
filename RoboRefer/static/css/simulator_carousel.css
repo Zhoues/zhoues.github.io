@@ -107,7 +107,7 @@
     transition: background-color 0.3s ease;
     line-height: 1;
     padding: 0;
-    padding-bottom: 12px;  /* 微调垂直位置 */
+    padding-bottom: 1.5%;  /* 微调垂直位置 */
 }
 
 .simulator-carousel-prev:hover,
