@@ -66,14 +66,16 @@
     font-size: 1.5rem;
     border: none;
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;  /* 稍微增大一点方便居中 */
+    height: 2.5rem;  /* 稍微增大一点方便居中 */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
     transition: background-color 0.3s ease;
+    line-height: 1;  /* 确保行高不影响居中 */
+    padding: 0;  /* 移除默认padding */
 }
 
 .carousel-prev:hover,
@@ -82,15 +84,28 @@
 }
 
 .carousel-prev {
-up: 0.5rem;
     left: 0.5rem;
 }
 
 .carousel-next {
-up: 0.5rem;
     right: 0.5rem;
 }
 
+/* 如果箭头还是不居中，可以使用这种方式微调 */
+.carousel-prev,
+.carousel-next {
+    padding-bottom: 12px;  /* 微调垂直位置 */
+}
+/* 使用更好的箭头字符 */
+.carousel-prev::after {
+    content: '‹';  /* 或者使用 '←' */
+    font-size: 3rem;
+}
+
+.carousel-next::after {
+    content: '›';  /* 或者使用 '→' */
+    font-size: 3rem;
+}
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .carousel-item {
