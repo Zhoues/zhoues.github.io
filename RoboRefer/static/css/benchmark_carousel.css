@@ -1,61 +1,37 @@
-/* Carousel Container Styles */
-.carousel-container {
-    width: 100%;
-    margin: auto;
-    padding: 2rem 2rem;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #ffffff;
-}
-
-.outer-section {
-    background-color: #f5f5f5;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-}
-
-.carousel-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-/* Carousel wrapper for track and arrows */
-.carousel-wrapper {
+/* Carousel Container Styles - 适配hero section */
+.hero .carousel-wrapper {
     position: relative;
     overflow: hidden;
     cursor: grab;
     display: flex;
     align-items: center;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
-.carousel-wrapper:active {
+.hero .carousel-wrapper:active {
     cursor: grabbing;
 }
 
-.carousel-track {
+.hero .carousel-track {
     display: flex;
     transition: transform 0.5s ease;
     will-change: transform;
 }
 
 /* Disable transition during instant repositioning */
-.carousel-track.no-transition {
+.hero .carousel-track.no-transition {
     transition: none;
 }
 
-.carousel-item {
+.hero .carousel-item {
     flex: 0 0 auto;
     width: 25%;
-    padding: 0.5rem; /* 修复了原来的空格问题 */
-    box-sizing: border-box; /* 确保padding计算在内 */
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
 
-.carousel-item img {
+.hero .carousel-item img {
     width: 100%;
     height: auto;
     display: block;
@@ -64,8 +40,8 @@
 }
 
 /* Arrows */
-.carousel-prev,
-.carousel-next {
+.hero .carousel-prev,
+.hero .carousel-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -87,111 +63,89 @@
     padding-bottom: 12px;
 }
 
-.carousel-prev:hover,
-.carousel-next:hover {
+.hero .carousel-prev:hover,
+.hero .carousel-next:hover {
     background-color: rgba(0,0,0,0.8);
 }
 
-.carousel-prev {
+.hero .carousel-prev {
     left: 0.5rem;
 }
 
-.carousel-next {
+.hero .carousel-next {
     right: 0.5rem;
 }
 
 /* 使用更好的箭头字符 */
-.carousel-prev::after {
+.hero .carousel-prev::after {
     content: '‹';
     font-size: 3rem;
 }
 
-.carousel-next::after {
+.hero .carousel-next::after {
     content: '›';
     font-size: 3rem;
 }
 
+/* Title styling */
+.text-image-container.title {
+    margin-bottom: 2rem;
+}
+
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero .carousel-item {
+        width: 33.333%;
+    }
+}
 
 @media (max-width: 768px) {
-    .carousel-container {
-        padding: 1.5rem 1rem;
-    }
-
-    .carousel-item {
+    .hero .carousel-item {
         width: 50%;
         padding: 0.25rem;
     }
 
-    .carousel-prev,
-    .carousel-next {
+    .hero .carousel-prev,
+    .hero .carousel-next {
         width: 2rem;
         height: 2rem;
     }
 
-    .carousel-prev::after,
-    .carousel-next::after {
+    .hero .carousel-prev::after,
+    .hero .carousel-next::after {
         font-size: 2.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .carousel-container {
-        padding: 1rem 0.5rem;
-    }
-
-    .carousel-item {
+    .hero .carousel-item {
         width: 100%;
         padding: 0.5rem;
     }
 
-    .carousel-prev,
-    .carousel-next {
+    .hero .carousel-prev,
+    .hero .carousel-next {
         width: 1.8rem;
         height: 1.8rem;
     }
 
-    .carousel-prev::after,
-    .carousel-next::after {
+    .hero .carousel-prev::after,
+    .hero .carousel-next::after {
         font-size: 2rem;
     }
 
-    .carousel-prev {
+    .hero .carousel-prev {
         left: 0.25rem;
     }
 
-    .carousel-next {
+    .hero .carousel-next {
         right: 0.25rem;
-    }
-
-    .carousel-title {
-        font-size: 1.5rem;
     }
 }
 
 /* 超小屏幕优化 */
 @media (max-width: 360px) {
-    .carousel-container {
-        border-radius: 4px;
-    }
-
-    .carousel-item img {
+    .hero .carousel-item img {
         border-radius: 4px;
     }
 }
-
-/* 确保在小屏幕上标题文字也有响应式 */
-.text-image-container.title.is-3 {
-    font-size: 1.75rem;
-}
-
-@media (max-width: 768px) {
-    .text-image-container.title.is-3 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-image-container.title.is-3 {
-        font-size: 1.25rem;
-    }
