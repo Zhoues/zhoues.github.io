@@ -7,8 +7,16 @@
     position: relative;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background: white;
+    background-color: #ffffff; /* 内部白色背景 */
 }
+
+.outer-section {
+      background-color: #f5f5f5;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
 
 .carousel-title {
     text-align: center;
