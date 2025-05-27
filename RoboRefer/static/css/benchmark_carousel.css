@@ -93,17 +93,9 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-    .hero .carousel-item {
-        width: 33.333%;
-    }
-}
 
 @media (max-width: 768px) {
-    .hero .carousel-item {
-        width: 50%;
-        padding: 0.25rem;
-    }
+
 
     .hero .carousel-prev,
     .hero .carousel-next {
@@ -118,10 +110,7 @@
 }
 
 @media (max-width: 480px) {
-    .hero .carousel-item {
-        width: 100%;
-        padding: 0.5rem;
-    }
+
 
     .hero .carousel-prev,
     .hero .carousel-next {
