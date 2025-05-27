@@ -82,10 +82,12 @@
 }
 
 .carousel-prev {
+up: 0.5rem;
     left: 0.5rem;
 }
 
 .carousel-next {
+up: 0.5rem;
     right: 0.5rem;
 }
 
