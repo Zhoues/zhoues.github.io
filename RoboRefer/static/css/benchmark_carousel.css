@@ -2,21 +2,20 @@
 .carousel-container {
     max-width: 960px;
     margin: auto;
-    padding: 2rem 1rem;
+    padding: 2rem 2rem;
     overflow: hidden;
     position: relative;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #ffffff; /* 内部白色背景 */
+    background-color: #ffffff;
 }
 
 .outer-section {
-      background-color: #f5f5f5;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-    }
-
+    background-color: #f5f5f5;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
 
 .carousel-title {
     text-align: center;
@@ -52,7 +51,8 @@
 .carousel-item {
     flex: 0 0 auto;
     width: 25%;
-    padding: 0.5rem;
+    padding: 0.5rem; /* 修复了原来的空格问题 */
+    box-sizing: border-box; /* 确保padding计算在内 */
 }
 
 .carousel-item img {
@@ -74,16 +74,17 @@
     font-size: 1.5rem;
     border: none;
     cursor: pointer;
-    width: 2.5rem;  /* 稍微增大一点方便居中 */
-    height: 2.5rem;  /* 稍微增大一点方便居中 */
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
     transition: background-color 0.3s ease;
-    line-height: 1;  /* 确保行高不影响居中 */
-    padding: 0;  /* 移除默认padding */
+    line-height: 1;
+    padding: 0;
+    padding-bottom: 12px;
 }
 
 .carousel-prev:hover,
@@ -99,19 +100,98 @@
     right: 0.5rem;
 }
 
-/* 如果箭头还是不居中，可以使用这种方式微调 */
-.carousel-prev,
-.carousel-next {
-    padding-bottom: 12px;  /* 微调垂直位置 */
-}
 /* 使用更好的箭头字符 */
 .carousel-prev::after {
-    content: '‹';  /* 或者使用 '←' */
+    content: '‹';
     font-size: 3rem;
 }
 
 .carousel-next::after {
-    content: '›';  /* 或者使用 '→' */
+    content: '›';
     font-size: 3rem;
 }
+
 /* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .carousel-item {
+        width: 50%;
+        padding: 0.25rem;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .carousel-prev::after,
+    .carousel-next::after {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .carousel-item {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .carousel-prev::after,
+    .carousel-next::after {
+        font-size: 2rem;
+    }
+
+    .carousel-prev {
+        left: 0.25rem;
+    }
+
+    .carousel-next {
+        right: 0.25rem;
+    }
+
+    .carousel-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 360px) {
+    .carousel-container {
+        border-radius: 4px;
+    }
+
+    .carousel-item img {
+        border-radius: 4px;
+    }
+}
+
+/* 确保在小屏幕上标题文字也有响应式 */
+.text-image-container.title.is-3 {
+    font-size: 1.75rem;
+}
+
+@media (max-width: 768px) {
+    .text-image-container.title.is-3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-image-container.title.is-3 {
+        font-size: 1.25rem;
+    }
