@@ -66,7 +66,7 @@
 
 .simulator-carousel-slide .divider {
     width: 1px;
-    background-color: #e0e0e0;
+    background-color: #ccc;
     margin: 0 0.5rem;
     align-self: stretch;
     flex-shrink: 0;
@@ -156,12 +156,6 @@
     background-color: #717171;
 }
 
-/* Hide disabled buttons */
-.simulator-carousel-prev:disabled,
-.simulator-carousel-next:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

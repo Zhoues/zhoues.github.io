@@ -8,7 +8,7 @@
 
 .dataset-carousel-track {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.1s ease;
     width: 100%;
 }
 
@@ -97,13 +97,6 @@
 .dataset-carousel-dots .dot.active,
 .dataset-carousel-dots .dot:hover {
     background-color: #717171;
-}
-
-/* Hide disabled buttons */
-.dataset-carousel-prev:disabled,
-.dataset-carousel-next:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
 }
 
 /* Responsive adjustments */
