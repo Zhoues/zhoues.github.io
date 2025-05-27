@@ -115,18 +115,3 @@
     font-size: 3rem;
 }
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-    .carousel-item {
-        width: 33.333%;
-    }
-}
-@media (max-width: 768px) {
-    .carousel-item {
-        width: 50%;
-    }
-}
-@media (max-width: 480px) {
-    .carousel-item {
-        width: 100%;
-    }
-}
