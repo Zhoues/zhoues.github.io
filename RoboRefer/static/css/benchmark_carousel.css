@@ -92,10 +92,12 @@
     margin-bottom: 2rem;
 }
 
-/* Responsive adjustments */
-
+/* 移动端保持4个图片一排，只调整padding和箭头大小 */
 @media (max-width: 768px) {
-
+    .hero .carousel-item {
+        width: 25%; /* 保持25%宽度 */
+        padding: 0.25rem; /* 减小padding */
+    }
 
     .hero .carousel-prev,
     .hero .carousel-next {
@@ -110,7 +112,15 @@
 }
 
 @media (max-width: 480px) {
+    .hero .carousel-item {
+        width: 25%; /* 保持25%宽度 */
+        padding: 0.15rem; /* 进一步减小padding */
+    }
 
+    .hero .carousel-item img {
+        border-radius: 4px; /* 减小圆角 */
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1); /* 减小阴影 */
+    }
 
     .hero .carousel-prev,
     .hero .carousel-next {
@@ -134,7 +144,23 @@
 
 /* 超小屏幕优化 */
 @media (max-width: 360px) {
+    .hero .carousel-item {
+        width: 25%; /* 依然保持25%宽度 */
+        padding: 0.1rem; /* 最小化padding */
+    }
+
     .hero .carousel-item img {
-        border-radius: 4px;
+        border-radius: 2px;
+    }
+
+    .hero .carousel-prev,
+    .hero .carousel-next {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .hero .carousel-prev::after,
+    .hero .carousel-next::after {
+        font-size: 1.5rem;
     }
 }
