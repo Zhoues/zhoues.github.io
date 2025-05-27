@@ -52,7 +52,10 @@
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="./static/css/carousel.css">
+    <link rel="stylesheet" href="static/css/benchmark_carousel.css">
+    <link rel="stylesheet" href="./static/css/simulator_carousel.css">
+    <link rel="stylesheet" href="./static/css/dataset_carousel.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -343,7 +346,7 @@
     <button class="carousel-next" id="nextBtn_1"></button>
   </div>
 </section>
-<script src="static/js/carousel_0.js"></script><script src="./static/js/carousel_1.js"></script>
+<script src="static/js/benchmark_carousel_0.js"></script><script src="static/js/benchmark_carousel_1.js"></script>
 <section class="carousel-container">
     <div class="text-image-container title is-3">
         <div class="text">
@@ -405,7 +408,7 @@
     <button class="carousel-next" id="nextBtn_3"></button>
   </div>
 </section>
-<script src="static/js/carousel_2.js"></script><script src="./static/js/carousel_3.js"></script>
+<script src="static/js/benchmark_carousel_2.js"></script><script src="static/js/benchmark_carousel_3.js"></script>
     <!-- Motivation -->
     <section class="section hero">
         <div class="container is-max-desktop">
@@ -576,223 +579,240 @@
     </section>
 
     <!-- Simulator Video -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Open6DOR V2 Benchmark Demos in LIBERO</h2>
-                <p>
-                    <b>
-                        These demos shows that RoboRefer can be integrated into the system as <span
-                            style="color: #E4A902;">a useful tool
-                            for spatial referring to predict location and placement with spatial relations</span>, which
-                        is crucial for robots both in simulator and real-world scenes.
-                    </b>
-                </p>
-                <br>
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Open6DOR V2 Benchmark Demos in LIBERO</h2>
+            <p>
+                <b>
+                    These demos shows that RoboRefer can be integrated into the system as <span
+                        style="color: #E4A902;">a useful tool
+                        for spatial referring to predict location and placement with spatial relations</span>, which
+                    is crucial for robots both in simulator and real-world scenes.
+                </b>
+            </p>
+            <br>
 
+            <!-- Carousel Container -->
+            <div class="simulator-carousel-container">
+                <button class="simulator-carousel-prev" id="simulatorPrevBtn"></button>
+                <button class="simulator-carousel-next" id="simulatorNextBtn"></button>
 
+                <div class="simulator-carousel-track" id="simulatorCarouselTrack">
+                    <!-- Slide 1: Left -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the tissue box to the <span style="color: #209CEF;">left</span> of the wineglass
+                                    on the table</b></p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/left_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
 
-                <div class="has-text-centered">
-                    <p><b>Task: Place the tissue box to the <span style="color: #209CEF;">left</span> of the wineglass
-                            on the table</b></p>
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/left_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/left.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Right -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the wineglass to the <span style="color: #209CEF;">right</span> of the hard drive
+                                    on the table.</b></p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/right_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
+
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/right_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/right.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Front -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the cup in <span style="color: #209CEF;">front</span> of the spatula on the
+                                    table.</b></p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/front_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
+
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/front_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/front.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Behind -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the cup <span style="color: #209CEF;">behind</span> the skillet on the table</b>
+                            </p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/behind_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
+
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/behind_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/behind.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Between -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the skillet <span style="color: #209CEF;">between</span> the hard drive and the
+                                    box on the table.</b></p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/between_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
+
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/between_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/between.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6: Center -->
+                    <div class="simulator-carousel-slide">
+                        <div class="has-text-centered">
+                            <p><b>Task: Place the shoe at the <span style="color: #209CEF;">center</span> of all the objects on
+                                    the table.</b></p>
+                        </div>
+                        <br>
+                        <div class="simulator-content-row">
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/center_l.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                            </div>
+
+                            <div class="simulator-content-item">
+                                <img src="assets/images/simulator/center_p.png" class="interpolation-image" alt=""
+                                    style="display: block; margin-left: auto; margin-right: auto" />
+                                <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                            </div>
+
+                            <!-- simulator-content-divider -->
+                            <div class="simulator-content-divider"></div>
+
+                            <div class="simulator-content-item">
+                                <video autoplay playsinline controls muted loop>
+                                    <source src="assets/videos/simulator/center.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="description"><b>Pick-Move-Place Execution</b></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br>
 
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/left_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/left_p.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/left.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
+                <!-- Dots indicator -->
+                <div class="simulator-carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                    <span class="dot" data-slide="5"></span>
                 </div>
-
-                <br>
-
-                <div class="has-text-centered">
-                    <p><b>Task: Place the wineglass to the <span style="color: #209CEF;">right</span> of the hard drive
-                            on the table.</b></p>
-                </div>
-                <br>
-
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/right_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/right_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/right.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="has-text-centered">
-                    <p><b>Task: Place the cup in <span style="color: #209CEF;">front</span> of the spatula on the
-                            table.</b></p>
-                </div>
-                <br>
-
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/front_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/front_p.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/front.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="has-text-centered">
-                    <p><b>Task: Place the cup <span style="color: #209CEF;">behind</span> the skillet on the table</b>
-                    </p>
-                </div>
-                <br>
-
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/behind_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/behind_p.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/behind.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="has-text-centered">
-                    <p><b>Task: Place the skillet <span style="color: #209CEF;">between</span> the hard drive and the
-                            box on the table.</b></p>
-                </div>
-                <br>
-
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/between_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/between_p.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/between.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="has-text-centered">
-                    <p><b>Task: Place the shoe at the <span style="color: #209CEF;">center</span> of all the objects on
-                            the table.</b></p>
-                </div>
-                <br>
-
-                <div class="video-row">
-                    <div class="video-container">
-                        <img src="assets/images/simulator/center_l.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Location Prediction</b></div>
-                    </div>
-
-                    <div class="video-container">
-                        <img src="assets/images/simulator/center_p.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
-                        <div class="description"><b>RoboRefer's Placement Prediction</b></div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="divider"></div>
-
-                    <div class="video-container">
-                        <video autoplay playsinline controls muted loop>
-                            <source src="assets/videos/simulator/center.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description"><b>Pick-Move-Place Execution</b></div>
-                    </div>
-                </div>
-
-                <br>
-
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
+    <script src="./static/js/simulator_carousel.js"></script>
 
 
 
@@ -833,42 +853,51 @@
 
 
     <!--  Constraint-aware Seg  -->
-    <section class="hero is-small">
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Visualization of RefSpatial Dataset</h2>
+            <p> <b>we show more visualization of RefSpatial Dataset, which has <span style="color: #E4A902;">31
+                        different spatial relations</span>
+                    to <span style="color: #E4A902;">enhance spatial understanding</span> in SFT stage and
+                    <span style="color: #E4A902;">advances multi-step spatial referring</span> with reasoning in RFT
+                    stage.
+                </b></p>
 
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Visualization of RefSpaital Dataset</h2>
-                <p> <b>we show more visualization of RefSpatial Dataset, which has <span style="color: #E4A902;">31
-                            different spatial relations</span>
-                        to <span style="color: #E4A902;">enhance spatial understanding</span> in SFT stage and
-                        <span style="color: #E4A902;">advances multi-step spatial referring</span> with reasoning in RFT
-                        stage.
-                    </b></p>
+            <!-- Dataset Carousel Container -->
+            <div class="dataset-carousel-container">
+                <button class="dataset-carousel-prev" id="datasetPrevBtn"></button>
+                <button class="dataset-carousel-next" id="datasetNextBtn"></button>
 
-                <div id="results-carousel-teaser1" class="carousel results-carousel">
-                    <div class="item item-video8">
-                        <img src="assets/images/dataset_1.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
+                <div class="dataset-carousel-track" id="datasetCarouselTrack">
+                    <div class="dataset-carousel-item">
+                        <img src="assets/images/dataset_1.png" class="interpolation-image" alt="Dataset 1" />
                     </div>
-                    <div class="item item-video9">
-                        <img src="assets/images/dataset_2.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="dataset-carousel-item">
+                        <img src="assets/images/dataset_2.png" class="interpolation-image" alt="Dataset 2" />
                     </div>
-                    <div class="item item-video7">
-                        <img src="assets/images/dataset_3.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="dataset-carousel-item">
+                        <img src="assets/images/dataset_3.png" class="interpolation-image" alt="Dataset 3" />
                     </div>
-                    <div class="item item-video9">
-                        <img src="assets/images/dataset_4.png" class="interpolation-image" alt=""
-                            style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="dataset-carousel-item">
+                        <img src="assets/images/dataset_4.png" class="interpolation-image" alt="Dataset 4" />
                     </div>
                 </div>
 
+                <!-- Dots indicator -->
+                <div class="dataset-carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-
+<script src="./static/js/dataset_carousel.js"></script>
 
     <!--BibTex citation -->
     <section class="section" id="BibTeX">

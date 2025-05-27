@@ -1,0 +1,136 @@
+/* Dataset Carousel Styles */
+.dataset-carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 2rem auto;
+    max-width: 800px; /* 根据图片大小调整 */
+}
+
+.dataset-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.dataset-carousel-item {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.dataset-carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Navigation Arrows - 与其他轮播保持一致 */
+.dataset-carousel-prev,
+.dataset-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    line-height: 1;
+    padding: 0;
+    padding-bottom: 12px;
+}
+
+.dataset-carousel-prev:hover,
+.dataset-carousel-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dataset-carousel-prev {
+    left: 0.5rem;
+}
+
+.dataset-carousel-next {
+    right: 0.5rem;
+}
+
+/* 使用相同的箭头字符 */
+.dataset-carousel-prev::after {
+    content: '‹';
+    font-size: 3rem;
+}
+
+.dataset-carousel-next::after {
+    content: '›';
+    font-size: 3rem;
+}
+
+/* Dots indicator - 与其他轮播保持一致 */
+.dataset-carousel-dots {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.dataset-carousel-dots .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.dataset-carousel-dots .dot.active,
+.dataset-carousel-dots .dot:hover {
+    background-color: #717171;
+}
+
+/* Hide disabled buttons */
+.dataset-carousel-prev:disabled,
+.dataset-carousel-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dataset-carousel-prev,
+    .dataset-carousel-next {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .dataset-carousel-prev::after,
+    .dataset-carousel-next::after {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dataset-carousel-prev,
+    .dataset-carousel-next {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.875rem;
+    }
+    
+    .dataset-carousel-prev::after,
+    .dataset-carousel-next::after {
+        font-size: 2rem;
+    }
+}
