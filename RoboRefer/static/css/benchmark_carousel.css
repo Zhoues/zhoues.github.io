@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     margin: 0 auto;
+    width: 93.5%; /* 设置轮播图宽度为92% */
     max-width: 100%;
 }
 
@@ -47,7 +48,7 @@
     transform: translateY(-50%);
     background-color: rgba(0,0,0,0.6);
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     border: none;
     cursor: pointer;
     width: 2.5rem;
@@ -56,27 +57,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    transition: background-color 0.3s ease;
+    z-index: 2;
+    transition: opacity 0.3s ease; /* 改为透明度过渡 */
     line-height: 1;
-    padding: 0;
+    padding: 0px;
     padding-bottom: 1.5%;
 }
 
 .hero .carousel-prev:hover,
 .hero .carousel-next:hover {
-    background-color: rgba(0,0,0,0.8);
+    opacity: 0.6; /* hover时改变透明度而不是背景色 */
 }
 
 .hero .carousel-prev {
-    left: 0.5rem;
+    left: -1rem; /* 将左箭头移到轮播图外面 */
 }
 
 .hero .carousel-next {
-    right: 0.5rem;
+    right: -1rem; /* 将右箭头移到轮播图外面 */
 }
 
-/* 使用更好的箭头字符 */
+/* 使用相同的箭头字符 */
 .hero .carousel-prev::after {
     content: '‹';
     font-size: 3rem;
@@ -87,6 +88,9 @@
     font-size: 3rem;
 }
 
+
+
+
 /* Title styling */
 .text-image-container.title {
     margin-bottom: 2rem;
@@ -94,21 +98,31 @@
 
 /* 移动端保持4个图片一排，只调整padding和箭头大小 */
 @media (max-width: 768px) {
+    .hero .carousel-wrapper {
+        width: 93.5%; /* 移动端使用全宽 */
+    }
+
     .hero .carousel-item {
         width: 25%; /* 保持25%宽度 */
         padding: 0.25rem; /* 减小padding */
+        font-size: 0.875rem;
     }
 
     .hero .carousel-prev,
     .hero .carousel-next {
-        width: 2rem;
-        height: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+
     }
 
-    .hero .carousel-prev::after,
-    .hero .carousel-next::after {
-        font-size: 2.5rem;
+    .hero .carousel-prev {
+        left: -1rem; /* 移动端箭头回到内部 */
     }
+
+    .hero .carousel-next {
+        right: -1rem; /* 移动端箭头回到内部 */
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -124,22 +138,18 @@
 
     .hero .carousel-prev,
     .hero .carousel-next {
-        width: 1.8rem;
-        height: 1.8rem;
-    }
-
-    .hero .carousel-prev::after,
-    .hero .carousel-next::after {
-        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     .hero .carousel-prev {
-        left: 0.25rem;
+        left: -1rem;
     }
 
     .hero .carousel-next {
-        right: 0.25rem;
+        right: -1rem;
     }
+
 }
 
 /* 超小屏幕优化 */
@@ -155,12 +165,15 @@
 
     .hero .carousel-prev,
     .hero .carousel-next {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+    }
+    .hero .carousel-prev {
+        left: -1rem;
     }
 
-    .hero .carousel-prev::after,
-    .hero .carousel-next::after {
-        font-size: 1.5rem;
+    .hero .carousel-next {
+        right: -1rem;
     }
+
 }
