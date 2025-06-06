@@ -3,7 +3,7 @@
     position: relative;
     overflow: hidden;
     margin: 2rem auto;
-    max-width: 800px; /* 根据图片大小调整 */
+    max-width: 800 px; /* 根据图片大小调整 */
 }
 
 .dataset-carousel-track {
@@ -59,11 +59,15 @@
 }
 
 .dataset-carousel-prev {
-    left: 0.5rem;
+    left: -1rem;
 }
 
 .dataset-carousel-next {
-    right: 0.5rem;
+    right: -1rem;
+}
+.hero .dataset-carousel-prev:hover,
+.hero .dataset-carousel-next:hover {
+    opacity: 0.6; /* hover时改变透明度而不是背景色 */
 }
 
 /* 使用相同的箭头字符 */

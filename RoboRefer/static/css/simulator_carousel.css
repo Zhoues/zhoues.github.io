@@ -2,7 +2,7 @@
 .simulator-content-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+
     gap: 1 rem;
     width: 100%;
 }
@@ -43,9 +43,9 @@
 
 .simulator-carousel-slide {
     flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
-    padding: 0 1rem;
+    width:100%;
+    min-width:100%;
+    padding: 0 7%;
     box-sizing: border-box;
 }
 
@@ -123,6 +123,12 @@
     right: 0.5rem;
 }
 
+.hero .simulator-carousel-prev:hover,
+.hero .simulator-carousel-next:hover {
+    opacity: 0.6; /* hover时改变透明度而不是背景色 */
+}
+
+
 /* 使用更好的箭头字符 */
 .simulator-carousel-prev::after {
     content: '‹';
@@ -162,6 +168,11 @@
     .simulator-carousel-slide .video-row {
         flex-direction: column;
         align-items: center;
+    }
+    .simulator-carousel-slide {
+
+        padding: 0 9%;
+
     }
 
     .simulator-carousel-slide .video-container {
