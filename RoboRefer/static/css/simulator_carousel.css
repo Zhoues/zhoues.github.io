@@ -18,7 +18,7 @@
     width: 100%;
     height: auto;
     display: block;
-    margin: 1 auto;
+    margin: 0 auto;
 }
 
 .simulator-content-divider {
@@ -45,7 +45,7 @@
     flex: 0 0 100%;
     width:100%;
     min-width:100%;
-    padding: 0 7%;
+    padding: 0 6%;
     box-sizing: border-box;
 }
 
@@ -171,7 +171,7 @@
     }
     .simulator-carousel-slide {
 
-        padding: 0 9%;
+        padding: 0 5%;
 
     }
 
@@ -184,7 +184,5 @@
         display: none;
     }
 
-    .simulator-carousel-container {
-        padding: 0 2rem;
-    }
+
 }
