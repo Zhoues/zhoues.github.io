@@ -90,7 +90,7 @@
 .simulator-carousel-prev,
 .simulator-carousel-next {
     position: absolute;
-    top: 50%;
+    top: 67%;
     transform: translateY(-50%);
     background-color: rgba(0,0,0,0.6);
     color: #fff;
@@ -178,6 +178,13 @@
     .simulator-carousel-slide .video-container {
         max-width: 100%;
         margin-bottom: 1rem;
+    }
+    .simulator-carousel-prev {
+        left: -0.5rem;
+    }
+
+    .simulator-carousel-next {
+        right: -0.5rem;
     }
 
     .simulator-carousel-slide .divider {
