@@ -1,0 +1,101 @@
+/* YouTube Video Carousel Buttons */
+.youtube-carousel-prev,
+.youtube-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    line-height: 1;
+    padding:0px;
+    padding-bottom: 1.5%;
+}
+
+.youtube-carousel-prev:hover,
+.youtube-carousel-next:hover {
+    opacity: 0.6;
+}
+
+.youtube-carousel-prev {
+    left: -3.3rem;
+}
+
+.youtube-carousel-next {
+    right: -3.3rem;
+}
+/* 使用相同的箭头字符 */
+.hero .youtube-carousel-prev::after {
+    content: '‹';
+    font-size: 3rem;
+}
+
+.hero .youtube-carousel-next::after {
+    content: '›';
+    font-size: 3rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+
+
+    .youtube-carousel-prev {
+        left: -2rem;
+    }
+
+    .youtube-carousel-next {
+        right: -2rem;
+    }
+    .hero .youtube-carousel-prev,
+    .hero .youtube-carousel-next {
+        width: 2.5rem;
+        height: 2.5rem;
+
+    }
+
+}
+
+@media (max-width: 480px) {
+
+
+    .youtube-carousel-prev {
+        left: -2rem;
+    }
+
+    .youtube-carousel-next {
+        right: -2rem;
+    }
+
+    .hero .youtube-carousel-prev,
+    .hero .youtube-carousel-next {
+        width: 2rem;
+        height: 2rem;
+
+    }
+
+}
+
+@media (max-width: 360px) {
+    .hero .youtube-carousel-prev,
+    .hero .youtube-carousel-next {
+        width: 2rem;
+        height: 2rem;
+    }
+    .hero .youtube-carousel-prev {
+        left: -3.5rem;
+    }
+
+    .hero .youtube-carousel-next {
+        right: -3.5rem;
+    }
+}

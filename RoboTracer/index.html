@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <br>
+    <!-- <div class="logo" style="text-align: center;">
+        <a href="index.html">
+          <img src="./assets/images/logo.png">
+        </a>
+    </div> -->
+    <title>RoboTracer | Mastering Spatial Trace with Reasoning in Vision-Language Models for Robotics
+
+    </title>
+
+    <script>
+        var task_map = {
+            "simple-object-manipulation": "simple_object_manipulation",
+            "visual-goal-reaching": "visual_goal_reaching",
+            "novel-concept-grounding": "novel_concept_grounding",
+            "one-shot-video-imitation": "one_shot_video_imitation",
+            "visual-constraint-satisfaction": "visual_constraint_satisfaction",
+            "visual-reasoning": "visual_reasoning"
+        };
+
+        function updateDemoVideo(category) {
+            // var demo = document.getElementById("single-menu-demos").value;
+            var task = document.getElementById(category + "-menu-tasks").value;
+            var inst = document.getElementById(category + "-menu-instances").value;
+
+            console.log(task_map[category], task, inst)
+
+            var video = document.getElementById(category + "-single-task-video");
+            video.src = "assets/videos/demos/" +
+                task_map[category] +
+                "/" +
+                task +
+                "/" +
+                inst +
+                ".mp4";
+            video.playbackRate = 2.0;
+            video.play();
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="static/css/benchmark_carousel.css">
+    <link rel="stylesheet" href="./static/css/simulator_carousel.css">
+    <link rel="stylesheet" href="./static/css/dataset_carousel.css">
+    <link rel="stylesheet" href="./static/css/demo_video.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+</head>
+
+
+
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+                <a class="navbar-item" href="https://github.com/zhoues">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link"> More Research </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://zhoues.github.io/Code-as-Monitor/" target="_blank">
+                            Code-as-Monitor (CVPR 2025)
+                        </a>
+                        <a class="navbar-item" href="https://zhoues.github.io/RoboRefer/" target="_blank">
+                            RoboRefer (NeurIPS 2025)
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Title and Author -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">RoboTracer: Mastering Spatial Trace with Reasoning
+                            in Vision-Language Models for Robotics</h1>
+
+                        <!-- <h3 class="title is-4 conference-authors">
+                            <a target="_blank" href="https://nips.cc/Conferences/2025">NeurIPS 2025</a>
+                        </h3> -->
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://zhoues.github.io/">Enshen&#160;Zhou</a><sup>1*</sup>,
+                                <a target="_blank" href="https://chicheng123.github.io/">Cheng&#160;Chi</a><sup>3*&dagger;</sup>,
+                                <a target="_blank" href="https://github.com/leeibo">Yibo&#160;Li</a><sup>1*;</sup>,
+                                <a target="_blank" href="https://anjingkun.github.io/">Jingkun&#160;An</a><sup>1*</sup>,
+                                <a target="_blank" href="https://github.com/theignorantt">Jiayuan&#160;Zhang</a><sup>1</sup>,
+                                <a target="_blank" href="https://rainfallsdown.github.io/">Shanyu&#160;Rong</a><sup>2,3</sup>,
+                                <a target="_blank" href="https://github.com/hany01rye">Yi&#160;Han</a><sup>1,3</sup>,
+                                <br>
+                                <a target="_blank" href="https://yuheng2000.github.io/">Yuheng&#160;Ji</a><sup>3,4</sup>,
+                                <a target="_blank" href="https://github.com/lmzpai">Mengzhen&#160;Liu</a><sup>2</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=2xR6P5AAAAAJ">Pengwei&#160;Wang</a><sup>3</sup>,
+                                <a target="_blank"
+                                    href="https://scholar.google.com/citations?user=4XVJrRAAAAAJ">Zhongyuan&#160;Wang</a><sup>3</sup>,
+                                <!-- <a target="_blank"
+                                    href="https://scholar.google.com.tw/citations?user=knvEK4AAAAAJ">Tiejun&#160;Huang</a><sup>2,3</sup>, -->
+                                <a target="_blank"
+                                    href="https://lucassheng.github.io/">Lu&#160;Sheng</a><sup>1&#9993;</sup>,
+                                <a target="_blank"
+                                    href="https://www.shanghangzhang.com/">Shanghang&#160;Zhang</a><sup>2,3&#9993;</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Beihang University; </span>
+                            <span class="author-block"><sup>2</sup>Peking University; </span>
+                            <span class="author-block"><sup>3</sup>Beijing Academy of Artificial Intelligence; </span>
+                            <span class="author-block"><sup>4</sup>CASIA; </span>
+                        </div>
+
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*&#160;</sup>Equal Contribution&#160;&#160;</span>
+                            <span class="author-block"><sup>&dagger;&#160;</sup>Project Leader&#160;&#160;</span>
+                            <span class="author-block"><sup>&#9993;&#160;</sup>Equal Advising&#160;&#160;</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO PDF Link. -->
+                                <!-- <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/2412.04455"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span> -->
+
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/pdf/2506.04308"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <!-- <span class="link-block">
+                                    <a href="https://www.youtube.com/watch?v=uiXKfOrfGrQ" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-video"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+
+                                <!-- <span class="link-block">
+                                    <a href="https://www.bilibili.com/video/BV1YXQRY2EHk" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-film"></i>
+                                        </span>
+                                        <span>BiilBili</span>
+                                    </a>
+                                </span> -->
+
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>Dataset (Coming Soon)</span>
+                                    </a>
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </span>
+                                        <span>Bench (Coming Soon)</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="is-size-4 publication-authors">
+                            <hr
+                                style=" width: 100%; height: 0.7px; background-color: rgba(0, 0, 0, 0.665);  margin-top: 1em; " />
+                                From what you say to where it moves — with
+                            <strong>RoboTracer</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+
+                <h2>
+                    <div class="text-image-container title is-3">
+                        <div>
+                            <img src="assets/images/highlight_logo.png" alt="highlight" width="50">
+                        </div>
+                        <div class="text">
+                            <p>Highlights</p>
+                        </div>
+                    </div>
+                </h2>
+
+
+                <div class="content has-text-justified">
+                    <p>
+                    <ul>
+                        <li><b>
+                            RoboTracer is the
+                                <span style="color: #E4A902;">first 3D-aware</span>
+                                VLM for
+                                <span style="color: #E4A902;">multi-step metric-grounded spatial tracing</span> with explicit
+                                reasoning.
+                            </b></li>
+                        <br>
+                        <li><b>
+                                RoboTracer first acquires <span style="color: #E4A902;">both 3D spatial referring and measuring </span> via SFT, and further advances <span
+                                    style="color: #E4A902;">multi-step metric-grounded spatial tracing</span> via RFT.
+                            </b></li>
+                        <br>
+                        <li><b>
+                                To support SFT and RFT training, we introduce TraceSpatial, a large-scale dataset of <span
+                                    style="color: #E4A902;">30M QA pairs</span>,
+                                    spanning <span
+                                    style="color: #E4A902;">outdoor/indoor/tabletop scenes</span>, and containing <span style="color: #E4A902;">complex reasoning
+                                    processes (up to 9 steps)</span>.
+                            </b></li>
+                        <br>
+                        <li><b>
+                                SFT-trained RoboRefer achieves
+                                <span style="color: #E4A902;">SOTA
+                                    spatial understanding/measuring/referring</span>, and RFT-trained RoboRefer exhibits 
+                                <span style="color: #E4A902;">strong spatial tracing</span>
+                                under novel cluttered and dynamic scenes with complex reasoning processes.
+                            </b></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Combined Demo Videos Section -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2>
+                    <div class="text-image-container title is-3">
+                        <div>
+                            <img src="assets/images/video_logo.png" alt="highlight" width="40">
+                        </div>
+                        <div class="text">
+                            <p>Demo Video</p>
+                        </div>
+                    </div>
+                </h2>
+                <div class="video">
+                    <div class="item" style="width: 92%; margin: 0 auto;">
+                        <video poster="" id="video2" autoplay playsinline controls muted loop>
+                            <source src="assets/videos/Demo3_G1_mobile_water_flowers_Mid.mp4" type="video/mp4">
+                        </video>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Motivation -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Motivation</h2>
+                    <img src="assets/images/motivation.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b><span style="color: #209CEF;">Spatial tracing</span></b> is pivotal for embodied robots to translate the spatially constrained instructions (e.g., "Water flowers from left to right with watering can hovering 1-5 cm above each flower") into 3D positional sequence (i.e., <b><span style="color: #209CEF;">spatial traces</span></b>) in complex 3D scenes.
+                            This task demands <b>(a)</b> <b><span style="color: #209CEF;">3D spatial referring</span></b> to resolve spatial relations and locate relevant objects involved in the trace, and <b>(b)</b> <b><span style="color: #209CEF;">3D spatial measuring</span></b> to understand absolute, real-world metric quantities related to the trace.
+                            For example, <b>(a)</b> 3D positions of the watering can and each flower pot are localized from left to right, and <b>(b)</b> their corresponding heights in meters are measured.
+                            By performing <b><span style="color: #E4A902;">multi-step, metric-grounded reasoning</span></b> over the key information above, the generated <b><span style="color: #209CEF;">spatial trace</span></b> can support not only <b>(c)</b> multi-step manipulation, but also <b>(d)</b> collision-free motion, thereby <b>(e)</b> enabling efficient control of diverse robots (e.g. G1 humanoid) across tasks in cluttered scenes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- YouTube Video -->
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <div class="content">
+                            <h2>
+                                <div class="text-image-container title is-3">
+                                    <div>
+                                        <img src="assets/images/video_logo.png" alt="highlight" width="40">
+                                    </div>
+                                    <div class="text">
+                                        <p>Summary Video</p>
+                                    </div>
+                                </div>
+                            </h2>
+                            <div class="publication-video">
+                                <iframe src="https://www.youtube.com/embed/uiXKfOrfGrQ?rel=0&amp;showinfo=0"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="text-image-container title is-3 has-text-centered">
+                <div class="text">
+                    <p>Spatial Tracing in Cluttered Scenes via RoboTracer</p>
+                </div>
+            </div>
+
+            <!-- First Carousel with outer wrapper -->
+            <div style="position: relative; width: 100%;">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_1.png" alt="Small v1"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_2.png" alt="Small v2"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_3.png" alt="Small v3"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_4.png" alt="Small v4"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_5.png" alt="Small v5"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_6.png" alt="Small v6"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_7.png" alt="Small v7"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_8.png" alt="Small v8"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_9.png" alt="Small v9"></div>
+                    </div>
+                </div>
+                <!-- Arrow Buttons outside -->
+                <button class="carousel-prev" id="prevBtn">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="15 18 9 12 15 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+                <button class="carousel-next" id="nextBtn">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="9 18 15 12 9 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+            </div>
+
+            <!-- Second Carousel with outer wrapper -->
+            <div style="position: relative; width: 100%; margin-top: 2rem;">
+                <div class="carousel-wrapper" id="carouselWrapper_1">
+                    <div class="carousel-track" id="carouselTrack_1">
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_10.png" alt="Small v10"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_11.png" alt="Small v11"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_12.png" alt="Small v12"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_13.png" alt="Small v13"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_14.png" alt="Small v14"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_15.png" alt="Small v15"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_16.png" alt="Small v16"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_17.png" alt="Small v17"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/small_v_18.png" alt="Small v18"></div>
+                    </div>
+                </div>
+                <!-- Arrow Buttons outside -->
+                <button class="carousel-prev" id="prevBtn_1">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="15 18 9 12 15 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+                <button class="carousel-next" id="nextBtn_1">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="9 18 15 12 9 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+            </div>
+
+            <!-- Third Carousel with outer wrapper -->
+            <div style="position: relative; width: 100%; margin-top: 2rem;">
+                <div class="carousel-wrapper" id="carouselWrapper_2">
+                    <div class="carousel-track" id="carouselTrack_2">
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_1.png" alt="Big v1"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_2.png" alt="Big v2"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_3.png" alt="Big v3"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_4.png" alt="Big v4"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_5.png" alt="Big v5"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_6.png" alt="Big v6"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_7.png" alt="Big v7"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_8.png" alt="Big v8"></div>
+                        <div class="carousel-item"><img src="benchmark_vis_image/big_v_9.png" alt="Big v9"></div>
+                    </div>
+                </div>
+                <!-- Arrow Buttons outside -->
+                <button class="carousel-prev" id="prevBtn_2">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="15 18 9 12 15 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+                <button class="carousel-next" id="nextBtn_2">
+<!--                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                        <polyline points="9 18 15 12 9 6"></polyline>-->
+<!--                    </svg>-->
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="static/js/benchmark_carousel_0.js"></script>
+<script src="static/js/benchmark_carousel_1.js"></script>
+<script src="static/js/benchmark_carousel_2.js"></script>
+
+
+<!-- Combined Demo Videos Section -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">More Real-world Demos</h2>
+            <p>
+                <b>
+                    Demos below show that RoboTracer can handle challenging long-horizon <span style="color: #209CEF;">spatial tracing</span> tasks
+                    requiring <span style="color: #209CEF;">complex multi-step metric-grounded reasoning</span>
+                    in <span style="color: #E4A902;">cluttered and dynamic environments</span>
+                    by integrating various control policies diverse robots.
+                </b>
+            </p>
+            <br>
+
+            <!-- Original Video Container -->
+            <!-- <div class="video-row">
+                <div class="item">
+                    <video poster="" id="video0" autoplay playsinline controls muted loop>
+                        <source src="assets/videos/Demo1_UR5_human_disturbance_High.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                </div>
+                <div class="item">
+                    <video poster="" id="video1" autoplay playsinline controls muted loop>
+                        <source src="assets/videos/Demo3_G1_mobile_water_flowers_High.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                </div>
+            </div> -->
+
+            <br>
+            <div class="video">
+                <!-- Video 3 -->
+                <div class="item" style="width: 45%; margin: 0 auto;">
+                    <video poster="" id="video2" autoplay playsinline controls muted loop>
+                        <source src="assets/videos/Demo1_UR5_human_disturbance_High.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                </div>
+            </div>
+
+            <!-- <br>
+            <div class="video">
+                <div class="item" style="width: 45%; margin: 0 auto;">
+                    <video poster="" id="video2" autoplay playsinline controls muted loop>
+                        <source src="assets/videos/Demo1_UR5_human_disturbance_High.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<script>
+    let videoCarouselIndex = 0;
+    const totalVideos = 8;
+    let isTransitioning = false;
+
+    function updateVideoCarousel(instant = false) {
+        const track = document.querySelector('.video-carousel-track');
+        const dots = document.querySelectorAll('.video-carousel-dots .dot');
+
+        if (instant) {
+            track.style.transition = 'none';
+        } else {
+            track.style.transition = 'transform 0.5s ease';
+        }
+
+        track.style.transform = `translateX(-${videoCarouselIndex * 100}%)`;
+
+        // Update dots - use modulo to handle the clone
+        const dotIndex = videoCarouselIndex % totalVideos;
+        dots.forEach((dot, index) => {
+            if (index === dotIndex) {
+                dot.style.backgroundColor = '#333';
+                dot.classList.add('active');
+            } else {
+                dot.style.backgroundColor = '#bbb';
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function videoCarouselNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        videoCarouselIndex++;
+        updateVideoCarousel();
+
+        // If we've moved to the clone, reset to the first video after transition
+        if (videoCarouselIndex === totalVideos) {
+            setTimeout(() => {
+                videoCarouselIndex = 0;
+                updateVideoCarousel(true);
+                isTransitioning = false;
+            }, 500);
+        } else {
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        }
+    }
+
+    function videoCarouselPrev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        // If we're at the first video, jump to the last video instantly
+        if (videoCarouselIndex === 0) {
+            videoCarouselIndex = totalVideos;
+            updateVideoCarousel(true);
+            setTimeout(() => {
+                videoCarouselIndex = totalVideos - 1;
+                updateVideoCarousel();
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            }, 20);
+        } else {
+            videoCarouselIndex--;
+            updateVideoCarousel();
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        }
+    }
+
+    function videoCarouselGoTo(index) {
+        if (isTransitioning) return;
+        videoCarouselIndex = index;
+        updateVideoCarousel();
+    }
+</script>
+
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Spatial tracing, as a fundamental embodied interaction ability for robots, is inherently challenging as it requires multi-step metric-grounded reasoning compounded with complex spatial referring and real-world metric measurement. However, existing methods struggle with this compositional task. To this end, we propose RoboTracer, a 3D-aware VLM that first achieves both 3D spatial referring and measuring via a universal spatial encoder and a regression-supervised decoder to enhance scale awareness during supervised fine-tuning (SFT). Moreover, RoboTracer advances multi-step metric-grounded reasoning via reinforcement fine-tuning (RFT) with metric-sensitive process rewards, supervising key intermediate perceptual cues to accurately generate spatial traces. To support SFT and RFT training, we introduce TraceSpatial, a large-scale dataset of 30M QA pairs, spanning outdoor/indoor/tabletop scenes and supporting complex reasoning processes (up to 9 steps). We further present TraceSpatial-Bench, a challenging benchmark filling the gap to evaluate spatial tracing. Experimental results show that RoboTracer surpasses baselines in spatial understanding, measuring, and referring, with an average success rate of 79.1%, and also achieves SOTA performance on TraceSpatial-Bench by a large margin, exceeding Gemini-2.5-Pro by 36% accuracy.  Notably, RoboTracer can be integrated with various control policies to execute long-horizon, dynamic tasks across diverse robots (UR5, G1 humanoid) in cluttered real-world scenes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End paper abstract -->
+
+
+
+    <!-- overview -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Method Overview</h2>
+                    <img src="assets/images/pipeline.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Overview of RoboTracer</b>.
+                            RoboTracer can process RGB images and task instructions, while <b><span style="color: #209CEF;">flexibly integrating various geometric configurations</span></b> (e.g., absolute depth, camera intrinsics) when available to improve spatial precision, <b><span style="color: #E4A902;">enabled by the integrated universal spatial encoder</span></b>.
+                            It also has a scale decoder to output <b><span style="color: #E4A902;">a metric scale factor supervised by a regression loss</span></b> beyond next-token prediction to <b><span style="color: #209CEF;">bolster real-world scale awareness</span></b>. 
+                            After SFT, <b><span style="color: #E4A902;">metric-sensitive reward functions</span></b> in RFT further supervise the key perceptual objects involved in the trace and <b><span style="color: #209CEF;">offer crucial intermediate evidence</span></b> (e.g., "3D spatial referring and measuring") for accurate spatial trace generation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- dataset -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="is-centered has-text-centered">
+                <div class="is-four-fifths">
+                    <h2 class="title is-3">Dataset Overview</h2>
+                    <img src="assets/images/dataset.png" class="interpolation-image" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto" />
+                    <div class="content has-text-justified">
+                        <p>
+                            RefSpatial is a comprehensive dataset including <b><span
+                                    style="color: #209CEF;">4.5M</span></b> data samples (<b><span style="color: #209CEF;">~30M QA pairs</span></b>) from 2D/3D/Video sources,
+                            spanning <b><span style="color: #209CEF;">outdoor/indoor/tabletop scenes</span></b> and containing <b><span style="color: #209CEF;">complex reasoning
+                                    processes (up to 9 steps)</span></b>.
+                            RefSpatial's key features are: (1) Fine-Grained
+                                    Annotations, (2) Multi-Dimensionality, (3) High Quality, (4) Large Scale,
+                                    (5) Rich Diversity, (6) Easy Scalability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulator Video -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Open6DOR V2 Benchmark Demos in LIBERO</h2>
+                <p>
+                    <b>
+                        These demos shows that RoboRefer can be integrated into the system as <span
+                            style="color: #E4A902;">a useful tool
+                            for spatial referring to predict location and placement with spatial relations</span>, which
+                        is crucial for robots both in simulator and real-world scenes.
+                    </b>
+                </p>
+                <br>
+
+                <!-- Carousel Container -->
+                <button class="simulator-carousel-prev" id="simulatorPrevBtn"></button>
+                    <button class="simulator-carousel-next" id="simulatorNextBtn"></button>
+                <div class="container is-max-desktop simulator-carousel-container">
+
+
+                    <div class="simulator-carousel-track" id="simulatorCarouselTrack">
+                        <!-- Slide 1: Left -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the tissue box to the <span style="color: #209CEF;">left</span> of the
+                                        wineglass
+                                        on the table</b></p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/left_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/left_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/left.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Right -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the wineglass to the <span style="color: #209CEF;">right</span> of the
+                                        hard drive
+                                        on the table.</b></p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/right_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/right_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/right.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Front -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the cup in <span style="color: #209CEF;">front</span> of the spatula
+                                        on the
+                                        table.</b></p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/front_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/front_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/front.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Behind -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the cup <span style="color: #209CEF;">behind</span> the skillet on the
+                                        table</b>
+                                </p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/behind_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/behind_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/behind.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: Between -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the skillet <span style="color: #209CEF;">between</span> the hard
+                                        drive and the
+                                        box on the table.</b></p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/between_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/between_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/between.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Center -->
+                        <div class="simulator-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Task: Place the shoe at the <span style="color: #209CEF;">center</span> of all the
+                                        objects on
+                                        the table.</b></p>
+                            </div>
+                            <br>
+                            <div class="simulator-content-row">
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/center_l.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Location Prediction</b></div>
+                                </div>
+
+                                <div class="simulator-content-item">
+                                    <img src="assets/images/simulator/center_p.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>RoboRefer's Placement Prediction</b></div>
+                                </div>
+
+                                <!-- simulator-content-divider -->
+                                <div class="simulator-content-divider"></div>
+
+                                <div class="simulator-content-item">
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/simulator/center.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>Pick-Move-Place Execution</b></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dots indicator -->
+                    <div class="simulator-carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                        <span class="dot" data-slide="5"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script src="./static/js/simulator_carousel.js"></script>
+
+
+
+    <!-- Omnigibson Video  -->
+    <!-- <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Omnigibson Simulator Demos</h2>
+                <p> <b>
+                        These demos shows that Code-as-Monitor can <span style="color: #E4A902;">detect richer
+                            failures</span> (e.g., point, line, surface-level disturbances) with <span
+                            style="color: #E4A902;">lower computational cost</span> compared to frequent querying VLMs.
+                    </b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video7">
+                        <video poster="" id="video7" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Slot_pen.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video8">
+                        <video poster="" id="video8" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Stow_book.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video9">
+                        <video poster="" id="video9" autoplay playsinline controls muted loop height="100%">
+                            <source src="assets/videos/Pour_tea.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <!--  Dataset  -->
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">Visualization of RefSpatial Dataset</h2>
+                <p> <b>we show more visualization of RefSpatial Dataset, which has <span style="color: #E4A902;">31
+                            different spatial relations</span>
+                        to <span style="color: #209CEF;">enhance spatial understanding</span> in SFT stage and
+                        <span style="color: #209CEF;">advance multi-step spatial referring</span> with reasoning in RFT
+                        stage.
+                    </b></p>
+
+                <button class="dataset-carousel-prev" id="datasetPrevBtn"></button>
+                    <button class="dataset-carousel-next" id="datasetNextBtn"></button>
+                <div class="dataset-carousel-container">
+
+
+                    <div class="dataset-carousel-track" id="datasetCarouselTrack">
+                        <div class="dataset-carousel-item">
+                            <img src="assets/images/dataset_1.png" class="interpolation-image" alt="Dataset 1" />
+                        </div>
+                        <div class="dataset-carousel-item">
+                            <img src="assets/images/dataset_2.png" class="interpolation-image" alt="Dataset 2" />
+                        </div>
+                        <div class="dataset-carousel-item">
+                            <img src="assets/images/dataset_3.png" class="interpolation-image" alt="Dataset 3" />
+                        </div>
+                        <div class="dataset-carousel-item">
+                            <img src="assets/images/dataset_4.png" class="interpolation-image" alt="Dataset 4" />
+                        </div>
+                    </div>
+
+                    <div class="dataset-carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="./static/js/dataset_carousel.js"></script> -->
+
+    <!--  Real-world Evaluation  -->
+    <!-- <section class="hero is-small">
+
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">RoboRefer's Prediction Visualization for Cluttered Tabletops.</h2>
+                <p> <b>we show more visualization of RoboRefer's prediction on a cluttered tabletop to demonstrate the
+                        <span style="color: #E4A902;">strong generalizability</span> on
+                        <span style="color: #209CEF;">unseen
+                        scenarios, tasks with novel spatial relation combinations, and objects</span>.</b></p>
+
+                <div id="results-carousel-teaser1" class="carousel results-carousel">
+                    <div class="item item-video8">
+                        <img src="assets/images/real_world_1.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video9">
+                        <img src="assets/images/real_world_2.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                    <div class="item item-video7">
+                        <img src="assets/images/real_world_3.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{zhou2025roborefer,
+    title={RoboRefer: Towards Spatial Referring with Reasoning in Vision-Language Models for Robotics},
+    author={Zhou, Enshen and An, Jingkun and Chi, Cheng and Han, Yi and Rong, Shanyu and Zhang, Chi and Wang, Pengwei and Wang, Zhongyuan and Huang, Tiejun and Sheng, Lu and others},
+    journal={arXiv preprint arXiv:2506.04308},
+    year={2025}
+}</code></pre>
+        </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+
+                        <p>
+                            This page was built using the <a
+                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                            You are free to borrow the of this website, we just ask that you link back to this page in
+                            the footer.
+                            <br> This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
