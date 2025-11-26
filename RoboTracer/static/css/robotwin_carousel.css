@@ -1,0 +1,196 @@
+/* Alternative: Create specific classes for robotwin carousel */
+.robotwin-content-row {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 1 rem;
+    width: 100%;
+}
+
+.robotwin-content-item {
+    flex: 1;
+    max-width: calc(33% - 1rem);
+    aspect-ratio: 4 / 3; /* 宽 : 高 */
+    text-align: center;
+}
+
+.robotwin-content-item img,
+.robotwin-content-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.robotwin-content-divider {
+    width: 2px;
+    background-color: #e0e0e0;
+    margin: 0 0.5rem;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+/* robotwin Carousel Styles */
+.robotwin-carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 rem;
+}
+
+.robotwin-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.robotwin-carousel-slide {
+    flex: 0 0 100%;
+    width:100%;
+    min-width:100%;
+    padding: 0 6%;
+    box-sizing: border-box;
+}
+
+/* Video row adjustments for carousel */
+.robotwin-carousel-slide .video-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.robotwin-carousel-slide .video-container {
+    flex: 1;
+    max-width: calc(33.333% - 0.67rem);
+    margin: 0;
+}
+
+.robotwin-carousel-slide .divider {
+    width: 1px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+/* Ensure images and videos fit properly */
+.robotwin-carousel-slide .interpolation-image,
+.robotwin-carousel-slide video {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.robotwin-carousel-slide .description {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Navigation Arrows - 与提供的样式保持一致 */
+.robotwin-carousel-prev,
+.robotwin-carousel-next {
+    position: absolute;
+    top: 67%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    line-height: 1;
+    padding: 0;
+    padding-bottom: 1.5%;  /* 微调垂直位置 */
+}
+
+.robotwin-carousel-prev:hover,
+.robotwin-carousel-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.robotwin-carousel-prev {
+    left: 0.5rem;
+}
+
+.robotwin-carousel-next {
+    right: 0.5rem;
+}
+
+.hero .robotwin-carousel-prev:hover,
+.hero .robotwin-carousel-next:hover {
+    opacity: 0.6; /* hover时改变透明度而不是背景色 */
+}
+
+
+/* 使用更好的箭头字符 */
+.robotwin-carousel-prev::after {
+    content: '‹';
+    font-size: 3rem;
+}
+
+.robotwin-carousel-next::after {
+    content: '›';
+    font-size: 3rem;
+}
+
+/* Dots indicator */
+.robotwin-carousel-dots {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.robotwin-carousel-dots .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.robotwin-carousel-dots .dot.active,
+.robotwin-carousel-dots .dot:hover {
+    background-color: #717171;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .robotwin-carousel-slide .video-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .robotwin-carousel-slide {
+
+        padding: 0 5%;
+
+    }
+
+    .robotwin-carousel-slide .video-container {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    .robotwin-carousel-prev {
+        left: -0.5rem;
+    }
+
+    .robotwin-carousel-next {
+        right: -0.5rem;
+    }
+
+    .robotwin-carousel-slide .divider {
+        display: none;
+    }
+
+
+}

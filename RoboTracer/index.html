@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="./static/css/demo_video.css">
     <link rel="stylesheet" href="./static/css/viewer.css">
     <link rel="stylesheet" href="./static/css/pcd_carousel.css">
+    <link rel="stylesheet" href="./static/css/robotwin_carousel.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -79,6 +80,7 @@
     <script src="./static/js/pcd/viewer_52.js"></script>
     <script src="./static/js/pcd/viewer_99.js"></script>
     <script src="./static/js/pcd_carousel.js"></script>
+    <script src="./static/js/robotwin_carousel.js"></script>
 </head>
 
 
@@ -393,7 +395,7 @@
     </section> -->
 
 
-
+    <!-- Benchmark -->
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
@@ -677,6 +679,252 @@
         </div>
     </section>
 
+    <!-- robotwin -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered">RoboTwin Execution Demo</h2>
+                <p>
+                    <b>
+                        Visualization of executing spatial-trace-guided embodied tasks in the <b>RoboTwin</b> simulation environment.
+The demo shows how robotic arms follow 3D spatial traces to successfully complete a diverse set of manipulation tasks, demonstrating <i>RoboTracer</i>'s strong spatial reasoning ability and effective support for embodied task execution.
+                </p>
+            
+                
+
+                <!-- Carousel Container -->
+                <button class="robotwin-carousel-prev" id="robotwinPrevBtn"></button>
+                    <button class="robotwin-carousel-next" id="robotwinNextBtn"></button>
+                <div class="container is-max-desktop robotwin-carousel-container">
+                    <div class="robotwin-carousel-track" id="robotwinCarouselTrack">
+                        <!-- Slide 3-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_bread_skillet.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Move the skillet to the front of the camera.<br>
+                                        2.Move the bread into the skillet.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_burger_fries.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the french fries on the right side of the tray.<br>
+                                        2.Put the hamburg on the left side of the tray.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_cans_plasticbox.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the leftmost can on the back side inside plastic box.<br>
+                                        2.Put the rightmost can on the front side inside plastic box.
+                                    </b></div>
+                                </div>
+                            </div>
+                        </div>   
+                        <!-- Slide 0-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_blocks_ranking_rgb.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Grasp the red block and place it to the left area of the table center.<br>
+                                        2.Grasp the green block and place it to the right side of the red block.<br>
+                                        3.Grasp the blue block and place it to the right side of the green block.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_blocks_ranking_size.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Grasp the largest block and place it to the left area of the table center.<br>
+                                        2.Grasp the medium block and place it to the middle area of the table center.<br>
+                                        3.Grasp the smallest block and place it to the right area of the table center.
+
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_click_bell.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>1.Click the bell.</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 1-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_move_can_pot.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Move the can to the left side of the pot.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_move_playingcard_away.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the playing cards to the right side area of the right grasp.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_move_stapler_pad.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>1.Move the stapler to the center of the green area.</b></div>
+                                </div>
+                            </div>
+                        </div>  
+                        <!-- Slide 2-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_a2b_left.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Move phone to the left side of the staple.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_a2b_right.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Move the bell to the right side of the soup.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_bread_basket.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the closest bread to the basket into the basket.<br>
+                                        2.Put the farthest bread to the basket into the basket..
+                                    </b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 4-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_container_plate.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the bowl into the plate.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_empty_cup.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Grasp the edge of the cup and put the cup onto the coaster.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_fan.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Grasp the fan and put the fan onto the lime pad.
+                                    </b></div>
+                                </div>
+                            </div>
+                        </div>  
+                        <!-- Slide 5-->
+                        <div class="robotwin-carousel-slide">
+                            <br>
+                            <div class="robotwin-content-row">
+                                
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_mouse_pad.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the mouse on the cyan pad.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_place_object_stand.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Put the stapler onto the display stand.
+                                    </b></div>
+                                </div>
+                                <div class="robotwin-content-item">      
+                                    <video autoplay playsinline controls muted loop>
+                                        <source src="assets/videos/robotwin/eval_stack_blocks_two.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="description"><b>
+                                        1.Move the red block on the front side of the table.<br>
+                                        2.Put the green block on the red block.
+                                    </b></div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <!-- Dots indicator -->
+                    <div class="robotwin-carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                        <span class="dot" data-slide="5"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 <section class="hero is-small">
     <div class="hero-body">
