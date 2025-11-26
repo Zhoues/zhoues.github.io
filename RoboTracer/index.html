@@ -392,6 +392,291 @@
         </div>
     </section> -->
 
+
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 has-text-centered"><i>TraceSpatial-Bench</i> Results</h2>
+                <p>
+                    <b>
+                        This demo shows the visualization of the performance of our model and the baseline model on <i>TraceSpatial-Bench</i>.
+                        <span style="color: #EA80FC;">Pink 3D boxes</span> mark correct end regions. Despite similar 2D projections (left views of each case), our model yields more accurate spatial traces than strong general VLMs, which often
+    produce floating or colliding traces due to inaccurate depth estimation. Leveraging richer geometric cues further improves performance.
+                </p>
+            
+                
+                <div class="trajectory-controls">
+                    <div class="trajectory-item">
+                        <input type="checkbox" id="traj_ours" checked>
+                        <div class="color-indicator" style="background-color: #00ff00;"></div>
+                        <label for="traj_ours_0">Ours with Geometric Input</label>
+                    </div>
+                    <div class="trajectory-item">
+                        <input type="checkbox" id="traj_ours2" checked>
+                        <div class="color-indicator" style="background-color: #4287F5;"></div>
+                        <label for="traj_ours2_0">Ours</label>
+                    </div>
+                    <div class="trajectory-item">
+                        <input type="checkbox" id="traj_gemini" checked>
+                        <div class="color-indicator" style="background-color: #DB4437;"></div>
+                        <label for="traj_gemini_0">Gemini-2.5-Pro</label>
+                    </div>
+                    <div class="trajectory-item">
+                        <input type="checkbox" id="traj_qwen4b" checked>
+                        <div class="color-indicator" style="background-color: #F4B400;"></div>
+                        <label for="traj_qwen4b_0">Qwen3-VL-4B</label>
+                    </div>
+                    <div class="trajectory-item">
+                        <input type="checkbox" id="traj_qwen8b" checked>
+                        <div class="color-indicator" style="background-color: #0F9D58;"></div>
+                        <label for="traj_qwen8b_0">Qwen3-VL-8B</label>
+                    </div>
+                </div>
+                
+                
+                
+            
+
+                <!-- Carousel Container -->
+                <button class="pcd-carousel-prev" id="pcdPrevBtn"></button>
+                    <button class="pcd-carousel-next" id="pcdNextBtn"></button>
+                <div class="container is-max-desktop pcd-carousel-container">
+                    <div class="pcd-carousel-track" id="pcdCarouselTrack">
+
+                        <!-- Slide 0-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the pale blue pillow on the sofa which is the second pale blue pillow from the right</span>, and move it to <span style="color: #EA80FC;">the top of the wooden stool on the left</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_0.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_0"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 1-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the paper towel on the white table</span>, and move it to <span style="color: #EA80FC;">the top of the highest brown wooden shelf on the right</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_1.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_1"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 4-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the orange object which at right which is on the window sill</span>, and move it to <span style="color: #EA80FC;">a spot which is on the sink&#x27;s edge and closest to the right wall</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_4.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_4"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 18-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the dark blue clothes which is hanging on the clothes rack</span>, and move it to <span style="color: #EA80FC;">the white basket on the right</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_18.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_18"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 23-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the rightmost vase on the desk</span>, and move it to <span style="color: #EA80FC;">the spot between the black monitor and the water bottle</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_23.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_23"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 25-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the towel hanging on the handle of the oven</span>, and move it to <span style="color: #EA80FC;">the sink</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_25.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_25"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 39-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the top orange fruit on the dark blue plate</span>, and move it to <span style="color: #EA80FC;">the orange bowl on the top right</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_39.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_39"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 51-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the top green paper box</span>, and move it to <span style="color: #EA80FC;">the spot which is on the table and in front of the farthest chair</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_51.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_51"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 52-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the second black remote controller from the front on the table</span>, and move it to <span style="color: #EA80FC;">the spot which is on the bed and on the left of the closest pillow</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_52.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_52"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <!-- Slide 99-->
+                        <div class="pcd-carousel-slide">
+                            <div class="has-text-centered">
+                                <p><b>Pick up <span style="color: #E4A902;">the brown towel</span>, and move it to <span style="color: #EA80FC;">the metal sink</span>.</b></p>
+                            </div>
+                            <br>
+                            <div class="pcd-content-row">
+                                <div class="pcd-content-item">      
+                                    <img src="assets/images/pcd_img/image_99.png" class="interpolation-image" alt=""
+                                        style="display: block; margin-left: auto; margin-right: auto" />
+                                    <div class="description"><b>Input Image</b></div>
+                                </div>
+                                <div class="pcd-content-item">
+                                    <div class="trajectory-viewer-card">
+                                        <canvas id="renderCanvas_99"></canvas>
+                                    </div>
+                                    <div class="description"><b>3D Point Cloud Visualization</b></div>
+                                </div>
+                            </div>
+                        </div>  
+
+
+                    </div>
+
+                    <!-- Dots indicator -->
+                    <div class="pcd-carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                        <span class="dot" data-slide="5"></span>
+                        <span class="dot" data-slide="6"></span>
+                        <span class="dot" data-slide="7"></span>
+                        <span class="dot" data-slide="8"></span>
+                        <span class="dot" data-slide="9"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
 <section class="hero is-small">
     <div class="hero-body">
         <div class="container is-max-desktop">
@@ -936,269 +1221,7 @@
             </div>
         </div>
     </section>
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 has-text-centered">Test</h2>
-                <p>
-                    <b>
-                        These demos Test<span
-                            style="color: #E4A902;">Test.
-                    </b>
-                </p>
-          
-               
-                <div class="trajectory-controls">
-                    
-                    <div class="trajectory-item">
-                        <input type="checkbox" id="traj_gemini" checked>
-                        <div class="color-indicator" style="background-color: #DB4437;"></div>
-                        <label for="traj_gemini_0">Gemini-2.5-Pro</label>
-                    </div>
-                    <div class="trajectory-item">
-                        <input type="checkbox" id="traj_ours" checked>
-                        <div class="color-indicator" style="background-color: #00ff00;"></div>
-                        <label for="traj_ours_0">Ours</label>
-                    </div>
-                    <div class="trajectory-item">
-                        <input type="checkbox" id="traj_ours2" checked>
-                        <div class="color-indicator" style="background-color: #4287F5;"></div>
-                        <label for="traj_ours2_0">Ours (no depth)</label>
-                    </div>
-                    <div class="trajectory-item">
-                        <input type="checkbox" id="traj_qwen4b" checked>
-                        <div class="color-indicator" style="background-color: #F4B400;"></div>
-                        <label for="traj_qwen4b_0">Qwen3-VL-4B</label>
-                    </div>
-                    <div class="trajectory-item">
-                        <input type="checkbox" id="traj_qwen8b" checked>
-                        <div class="color-indicator" style="background-color: #0F9D58;"></div>
-                        <label for="traj_qwen8b_0">Qwen3-VL-8B</label>
-                    </div>
-                </div>
-                
-              
-               
-            
 
-                <!-- Carousel Container -->
-                <button class="pcd-carousel-prev" id="pcdPrevBtn"></button>
-                    <button class="pcd-carousel-next" id="pcdNextBtn"></button>
-                <div class="container is-max-desktop pcd-carousel-container">
-                    <div class="pcd-carousel-track" id="pcdCarouselTrack">
-
-                        <!-- Slide 0-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the pale blue pillow on the sofa which is the second pale blue pillow from the right, and move it to the top of the wooden stool on the left.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_0.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_0"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 1-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the paper towel on the white table, and move it to the top of the highest brown wooden shelf on the right.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_1.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_1"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 4-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the orange object which at right which is on the window sill, and move it to a spot which is on the sink's edge and closest to the right wall.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_4.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_4"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 18-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the dark blue clothes which is hanging on the clothes rack, and move it to the white basket on the right.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_18.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_18"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 23-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the rightmost vase on the desk, and move it to the spot between the black monitor and the water bottle.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_23.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_23"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 25-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the towel hanging on the handle of the oven, and move it to the sink.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_25.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_25"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 39-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the top orange fruit on the dark blue plate, and move it to the orange bowl on the top right.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_39.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_39"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 51-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the top green paper box, and move it to the spot which is on the table and in front of the farthest chair.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_51.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_51"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 52-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the second black remote controller from the front on the table, and move it to the spot which is on the bed and on the left of the closest pillow.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_52.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_52"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-                        <!-- Slide 99-->
-                        <div class="pcd-carousel-slide">
-                            <div class="has-text-centered">
-                                <p><b>Pick up the brown towel, and move it to the metal sink.</b></p>
-                            </div>
-                            <br>
-                            <div class="pcd-content-row">
-                                <div class="pcd-content-item">      
-                                    <img src="assets/images/pcd_img/image_99.png" class="interpolation-image" alt=""
-                                        style="display: block; margin-left: auto; margin-right: auto" />
-                                </div>
-                                <div class="pcd-content-item">
-                                    <div class="trajectory-viewer-card">
-                                        <canvas id="renderCanvas_99"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-    
-    
-    
-                    </div>
-
-                    <!-- Dots indicator -->
-                    <div class="pcd-carousel-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                        <span class="dot" data-slide="3"></span>
-                        <span class="dot" data-slide="4"></span>
-                        <span class="dot" data-slide="5"></span>
-                        <span class="dot" data-slide="6"></span>
-                        <span class="dot" data-slide="7"></span>
-                        <span class="dot" data-slide="8"></span>
-                        <span class="dot" data-slide="9"></span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
     <script src="./static/js/simulator_carousel.js"></script>
 
 
