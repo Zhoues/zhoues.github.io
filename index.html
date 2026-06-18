@@ -210,7 +210,10 @@
       <!-- <td style="padding:0px;width:100%;vertical-align:middle"> -->
         <p>
           <li>
-            [2026/06]🎉 <a href="https://zhoues.github.io/RoboTracer/" target="_blank">RoboTracer</a> gets accepted to <a href="https://eccv.ecva.net/" target="_blank">ECCV 2026</a>! See you in Malmö, Sweden!
+            [2026/06]🎉 <a href="https://zhoues.github.io/RoboTracer/" target="_blank">RoboTracer</a> and <a href="https://arxiv.org/abs/2603.14367" target="_blank">HomeGuard</a> get accepted to <a href="https://eccv.ecva.net/" target="_blank">ECCV 2026</a>! See you in Malmö, Sweden!
+          </li>
+          <li>
+            [2026/06]🎉 <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial</a> and <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial-Bench</a> reach <em><b><span style="color: #FF0000;">100K+ total downloads</span></b></em>! <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial Dataset</a> is now used by <em><b><span style="color: #FF0000;">Qwen-RoboManip</span></b></em>, <em><b><span style="color: #FF0000;">MolmoAct2</span></b></em>, <em><b><span style="color: #FF0000;">Mimo-Embodied</span></b></em>, <em><b><span style="color: #FF0000;">HY-Embodied</span></b></em>, and <em><b><span style="color: #FF0000;">JoyAI-RA 0.1</span></b></em> to enhance spatial perception ability. <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial-Bench</a> is also now used by <em><b><span style="color: #FF0000;">Qwen</span></b></em>, <em><b><span style="color: #FF0000;">Seed</span></b></em>, <em><b><span style="color: #FF0000;">Gemini</span></b></em>, and <em><b><span style="color: #FF0000;">Cosmos</span></b></em> series to evaluate spatial reasoning in complex embodied scenes.
           </li>
           <li>
             [2026/05]🎉 Honored to be recognized as an <em><b>CVPR 2026 Outstanding Reviewer</b></em> and <em><b>ICML 2026 Gold Reviewer</b></em>!
@@ -233,12 +236,6 @@
           <li>
             [2025/11]🎉 One paper <a href="https://arxiv.org/pdf/2511.21398" target="_blank">Prune4Web</a> is accepted by <a href="https://aaai.org/conference/aaai/aaai-26/" target="_blank">AAAI 2026</a>! See you in Singapore!
           </li>
-          <li>
-            [2025/09]🎉 <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial-Bench</a> <em><b><span style="color: #FF0000;"> is used by Qwen3-VL, Seed2.0 and Gemini-Robotics-1.5</span></b></em> to evaluate spatial reasoning in complex scenes!
-          </li>
-          <!-- <li>
-            [2025/09]🎉 <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RefSpatial-Bench</a> is now used by <a href="https://github.com/QwenLM/Qwen3-VL" target="_blank">Qwen3-VL</a> and <a href="https://deepmind.google/discover/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/" target="_blank">Gemini-Robotics-1.5</a> to evaluate spatial reasoning in complex scenes!
-          </li> -->
           <li>
             [2025/09]🎉 <a href="https://zhoues.github.io/RoboRefer/" target="_blank">RoboRefer</a> gets accepted to <a href="https://nips.cc/Conferences/2025" target="_blank">NeurIPS 2025</a>! See you in San Diego, USA!
           </li>
@@ -292,6 +289,77 @@
         Representative works are <span class="highlight">highlighted</span>.
         
       </p>
+
+      <!-- RoboTracer -->
+      <tr onmouseout="malle_stop()" onmouseover="malle_start()" bgcolor="#ffffdc">
+        <td style="padding:20px;width:40%;vertical-align:middle">
+          <div class="one">
+            <div class="two" id='malle_image'>
+              <!-- <br> -->
+              <img src='images/publication_preview/cvpr26_robotracer.png' width="325">
+            </div>
+            <!-- <br> -->
+            <img src='images/publication_preview/cvpr26_robotracer.png' width="325">
+          </div>
+          <script type="text/javascript">
+            function malle_start() {
+              document.getElementById('malle_image').style.opacity = "1";
+            }
+            function malle_stop() {
+              document.getElementById('malle_image').style.opacity = "0";
+            }
+            malle_stop()
+          </script>
+        </td>
+
+        <td style="padding:20px;width:65%;vertical-align:middle">
+          <a href="https://zhoues.github.io/RoboTracer/" target="_blank">
+            <papertitle>RoboTracer: Mastering Spatial Trace with Reasoning in Vision-Language Models for Robotics
+            </papertitle>
+          </a>
+          <br>
+          <spacer></spacer>
+          <a:focus><b>Enshen Zhou *</b></a:focus>,
+          <a class="a2" href="https://github.com/leeibo">Yibo&#160;Li *</a>,
+          <a class="a2" href="https://anjingkun.github.io/">Jingkun&#160;An *</a>,
+          <a class="a2" href="https://github.com/theignorantt">Jiayuan&#160;Zhang</a>,
+          <a class="a2" href="https://rainfallsdown.github.io/">Shanyu&#160;Rong</a>,
+          <a class="a2" href="https://github.com/lmzpai">Mengzhen&#160;Liu</a>,
+          <a class="a2" href="https://github.com/hany01rye">Yi&#160;Han</a>,
+          <a class="a2" href="https://yuheng2000.github.io/">Yuheng&#160;Ji</a>,
+          <a class="a2" href="https://tanhuajie.github.io/" target="_blank">Huajie&#160;Tan</a>,
+          <a class="a2" href="https://jiaweihe.com/" target="_blank">Jiawei&#160;He</a>,
+          <a class="a2" href="https://scholar.google.com/citations?user=2xR6P5AAAAAJ">Pengwei&#160;Wang</a>,
+          <a class="a2" href="https://scholar.google.com/citations?user=4XVJrRAAAAAJ">Zhongyuan&#160;Wang</a>,
+          <a class="a2" href="https://chicheng123.github.io/" target="_blank">Cheng&#160;Chi<sup>†</sup></a>,
+          <a class="a2" href="https://lucassheng.github.io/">Lu&#160;Sheng<sup>†</sup></a>,
+          <a class="a2" href="https://www.shanghangzhang.com/">Shanghang&#160;Zhang<sup>†</sup></a>
+          <br>
+          <spacer></spacer>
+          <a class="a1" href="https://arxiv.org/abs/2512.13660">[Paper]</a> /
+          <a class="a1" href="https://zhoues.github.io/RoboTracer/">[Project]</a> /
+          <!-- <a class="a1" href="https://www.bilibili.com/video/BV1YXQRY2EHk">[BiilBili Video]</a> / -->
+          <a class="a1" href="https://github.com/Zhoues/RoboTracer">[Code]</a> /
+          <a class="a1" href="https://mp.weixin.qq.com/s/GoOby4U9nUOEgIxw2NgPLQ">[机器之心]</a> /
+
+          <a class="a1">
+            <span class="copy-text" data-bibtex="
+@article{zhou2025robotracer,
+    title={RoboTracer: Mastering Spatial Trace with Reasoning in Vision-Language Models for Robotics},
+    author={Zhou, Enshen and Chi, Cheng and Li, Yibo and An, Jingkun and Zhang, Jiayuan and Rong, Shanyu and Han, Yi and Ji, Yuheng and Liu, Mengzhen and Wang, Pengwei and others},
+    journal={arXiv preprint arXiv:2512.13660},
+    year={2025}
+}
+            " onclick="copyBibTeX(this)">[BibTeX]</span>
+            <span class="copy-success">Copy Success!</span>
+          </a>
+          <spacer></spacer>
+          <em>TL;DR: From what you say to where it moves using RoboTracer!</em>
+          <br>
+          <spacer></spacer>
+          <em><b>ECCV 2026</b></em>
+        </td>
+      </tr>
 
       <!-- SaPaVe -->
       <tr onmouseout="malle_stop()" onmouseover="malle_start()" bgcolor="#ffffdc">
@@ -405,77 +473,6 @@
           <br>
           <spacer></spacer>
           <em><b>Technical Report</b></em>
-        </td>
-      </tr>
-
-      <!-- RoboTracer -->
-      <tr onmouseout="malle_stop()" onmouseover="malle_start()" bgcolor="#ffffdc">
-        <td style="padding:20px;width:40%;vertical-align:middle">
-          <div class="one">
-            <div class="two" id='malle_image'>
-              <!-- <br> -->
-              <img src='images/publication_preview/cvpr26_robotracer.png' width="325">
-            </div>
-            <!-- <br> -->
-            <img src='images/publication_preview/cvpr26_robotracer.png' width="325">
-          </div>
-          <script type="text/javascript">
-            function malle_start() {
-              document.getElementById('malle_image').style.opacity = "1";
-            }
-            function malle_stop() {
-              document.getElementById('malle_image').style.opacity = "0";
-            }
-            malle_stop()
-          </script>
-        </td>
-
-        <td style="padding:20px;width:65%;vertical-align:middle">
-          <a href="https://zhoues.github.io/RoboTracer/" target="_blank">
-            <papertitle>RoboTracer: Mastering Spatial Trace with Reasoning in Vision-Language Models for Robotics
-            </papertitle>
-          </a>
-          <br>
-          <spacer></spacer>
-          <a:focus><b>Enshen Zhou *</b></a:focus>,
-          <a class="a2" href="https://github.com/leeibo">Yibo&#160;Li *</a>,
-          <a class="a2" href="https://anjingkun.github.io/">Jingkun&#160;An *</a>,
-          <a class="a2" href="https://github.com/theignorantt">Jiayuan&#160;Zhang</a>,
-          <a class="a2" href="https://rainfallsdown.github.io/">Shanyu&#160;Rong</a>,
-          <a class="a2" href="https://github.com/lmzpai">Mengzhen&#160;Liu</a>,
-          <a class="a2" href="https://github.com/hany01rye">Yi&#160;Han</a>,
-          <a class="a2" href="https://yuheng2000.github.io/">Yuheng&#160;Ji</a>,
-          <a class="a2" href="https://tanhuajie.github.io/" target="_blank">Huajie&#160;Tan</a>,
-          <a class="a2" href="https://jiaweihe.com/" target="_blank">Jiawei&#160;He</a>,
-          <a class="a2" href="https://scholar.google.com/citations?user=2xR6P5AAAAAJ">Pengwei&#160;Wang</a>,
-          <a class="a2" href="https://scholar.google.com/citations?user=4XVJrRAAAAAJ">Zhongyuan&#160;Wang</a>,
-          <a class="a2" href="https://chicheng123.github.io/" target="_blank">Cheng&#160;Chi<sup>†</sup></a>,
-          <a class="a2" href="https://lucassheng.github.io/">Lu&#160;Sheng<sup>†</sup></a>,
-          <a class="a2" href="https://www.shanghangzhang.com/">Shanghang&#160;Zhang<sup>†</sup></a>
-          <br>
-          <spacer></spacer>
-          <a class="a1" href="https://arxiv.org/abs/2512.13660">[Paper]</a> /
-          <a class="a1" href="https://zhoues.github.io/RoboTracer/">[Project]</a> /
-          <!-- <a class="a1" href="https://www.bilibili.com/video/BV1YXQRY2EHk">[BiilBili Video]</a> / -->
-          <a class="a1" href="https://github.com/Zhoues/RoboTracer">[Code]</a> /
-          <a class="a1" href="https://mp.weixin.qq.com/s/GoOby4U9nUOEgIxw2NgPLQ">[机器之心]</a> /
-
-          <a class="a1">
-            <span class="copy-text" data-bibtex="
-@article{zhou2025robotracer,
-    title={RoboTracer: Mastering Spatial Trace with Reasoning in Vision-Language Models for Robotics},
-    author={Zhou, Enshen and Chi, Cheng and Li, Yibo and An, Jingkun and Zhang, Jiayuan and Rong, Shanyu and Han, Yi and Ji, Yuheng and Liu, Mengzhen and Wang, Pengwei and others},
-    journal={arXiv preprint arXiv:2512.13660},
-    year={2025}
-}
-            " onclick="copyBibTeX(this)">[BibTeX]</span>
-            <span class="copy-success">Copy Success!</span>
-          </a>
-          <spacer></spacer>
-          <em>TL;DR: From what you say to where it moves using RoboTracer!</em>
-          <br>
-          <spacer></spacer>
-          <em><b>ECCV 2026</b></em>
         </td>
       </tr>
 
